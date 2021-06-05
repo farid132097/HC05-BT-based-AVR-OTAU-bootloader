@@ -1,0 +1,2264 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         000002be  00800100  00007c80  00000d14  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000c80  00007000  00007000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          000000e7  008003be  008003be  00000fd2  2**0
+                  ALLOC
+  3 .debug_aranges 00000020  00000000  00000000  00000fd2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 0000029d  00000000  00000000  00000ff2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000bca  00000000  00000000  0000128f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000300  00000000  00000000  00001e59  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000bbf  00000000  00000000  00002159  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000150  00000000  00000000  00002d18  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000032d  00000000  00000000  00002e68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000046b  00000000  00000000  00003195  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000c0  00000000  00000000  00003600  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00007000 <__vectors>:
+    7000:	0c 94 34 38 	jmp	0x7068	; 0x7068 <__ctors_end>
+    7004:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7008:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    700c:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7010:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7014:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7018:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    701c:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7020:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7024:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7028:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    702c:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7030:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7034:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7038:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    703c:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7040:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7044:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7048:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    704c:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7050:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7054:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7058:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    705c:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7060:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+    7064:	0c 94 51 38 	jmp	0x70a2	; 0x70a2 <__bad_interrupt>
+
+00007068 <__ctors_end>:
+    7068:	11 24       	eor	r1, r1
+    706a:	1f be       	out	0x3f, r1	; 63
+    706c:	cf ef       	ldi	r28, 0xFF	; 255
+    706e:	d8 e0       	ldi	r29, 0x08	; 8
+    7070:	de bf       	out	0x3e, r29	; 62
+    7072:	cd bf       	out	0x3d, r28	; 61
+
+00007074 <__do_copy_data>:
+    7074:	13 e0       	ldi	r17, 0x03	; 3
+    7076:	a0 e0       	ldi	r26, 0x00	; 0
+    7078:	b1 e0       	ldi	r27, 0x01	; 1
+    707a:	e0 e8       	ldi	r30, 0x80	; 128
+    707c:	fc e7       	ldi	r31, 0x7C	; 124
+    707e:	02 c0       	rjmp	.+4      	; 0x7084 <.do_copy_data_start>
+
+00007080 <.do_copy_data_loop>:
+    7080:	05 90       	lpm	r0, Z+
+    7082:	0d 92       	st	X+, r0
+
+00007084 <.do_copy_data_start>:
+    7084:	ae 3b       	cpi	r26, 0xBE	; 190
+    7086:	b1 07       	cpc	r27, r17
+    7088:	d9 f7       	brne	.-10     	; 0x7080 <.do_copy_data_loop>
+
+0000708a <__do_clear_bss>:
+    708a:	14 e0       	ldi	r17, 0x04	; 4
+    708c:	ae eb       	ldi	r26, 0xBE	; 190
+    708e:	b3 e0       	ldi	r27, 0x03	; 3
+    7090:	01 c0       	rjmp	.+2      	; 0x7094 <.do_clear_bss_start>
+
+00007092 <.do_clear_bss_loop>:
+    7092:	1d 92       	st	X+, r1
+
+00007094 <.do_clear_bss_start>:
+    7094:	a5 3a       	cpi	r26, 0xA5	; 165
+    7096:	b1 07       	cpc	r27, r17
+    7098:	e1 f7       	brne	.-8      	; 0x7092 <.do_clear_bss_loop>
+    709a:	0e 94 dc 3d 	call	0x7bb8	; 0x7bb8 <main>
+    709e:	0c 94 3e 3e 	jmp	0x7c7c	; 0x7c7c <_exit>
+
+000070a2 <__bad_interrupt>:
+    70a2:	0c 94 00 38 	jmp	0x7000	; 0x7000 <__vectors>
+
+000070a6 <WDT_disable>:
+uint32_t data_sum=0,adc_sum=0,adc_avg=0;
+
+
+
+void WDT_disable(void){
+cli();
+    70a6:	f8 94       	cli
+MCUSR=0;
+    70a8:	14 be       	out	0x34, r1	; 52
+WDTCSR|=(1<<WDCE)|(1<<WDE);
+    70aa:	e0 e6       	ldi	r30, 0x60	; 96
+    70ac:	f0 e0       	ldi	r31, 0x00	; 0
+    70ae:	80 81       	ld	r24, Z
+    70b0:	88 61       	ori	r24, 0x18	; 24
+    70b2:	80 83       	st	Z, r24
+WDTCSR=0;
+    70b4:	10 82       	st	Z, r1
+}
+    70b6:	08 95       	ret
+
+000070b8 <WDT_reset>:
+
+void WDT_reset(void){
+
+UCSR0B=0x00;
+    70b8:	10 92 c1 00 	sts	0x00C1, r1
+UCSR0C=0x00;
+    70bc:	10 92 c2 00 	sts	0x00C2, r1
+UBRR0H=0x00;
+    70c0:	10 92 c5 00 	sts	0x00C5, r1
+UBRR0L=0x00;
+    70c4:	10 92 c4 00 	sts	0x00C4, r1
+TCCR1B=0x00;
+    70c8:	10 92 81 00 	sts	0x0081, r1
+ADCSRA=0x00;
+    70cc:	10 92 7a 00 	sts	0x007A, r1
+ADMUX =0x00;
+    70d0:	10 92 7c 00 	sts	0x007C, r1
+TCNT1=0;
+    70d4:	10 92 85 00 	sts	0x0085, r1
+    70d8:	10 92 84 00 	sts	0x0084, r1
+
+WDTCSR=(1<<WDCE)|(1<<WDE);
+    70dc:	88 e1       	ldi	r24, 0x18	; 24
+    70de:	80 93 60 00 	sts	0x0060, r24
+WDTCSR=(1<<WDE);
+    70e2:	88 e0       	ldi	r24, 0x08	; 8
+    70e4:	80 93 60 00 	sts	0x0060, r24
+    70e8:	ff cf       	rjmp	.-2      	; 0x70e8 <WDT_reset+0x30>
+
+000070ea <CLEAR_peripherals>:
+while(1);
+}
+
+void CLEAR_peripherals(void){
+UBRR0H=0x00;
+    70ea:	10 92 c5 00 	sts	0x00C5, r1
+UBRR0L=0x00;
+    70ee:	10 92 c4 00 	sts	0x00C4, r1
+UCSR0B=0x00;
+    70f2:	10 92 c1 00 	sts	0x00C1, r1
+UCSR0C=0x00;
+    70f6:	10 92 c2 00 	sts	0x00C2, r1
+TCCR1B=0x00;
+    70fa:	10 92 81 00 	sts	0x0081, r1
+ADCSRA=0x00;
+    70fe:	10 92 7a 00 	sts	0x007A, r1
+ADMUX =0x00;
+    7102:	10 92 7c 00 	sts	0x007C, r1
+TCNT1=0;
+    7106:	10 92 85 00 	sts	0x0085, r1
+    710a:	10 92 84 00 	sts	0x0084, r1
+}
+    710e:	08 95       	ret
+
+00007110 <TIM1_init>:
+
+void TIM1_init(void){
+TCCR1B|=(1<<CS10)|(1<<CS12);
+    7110:	e1 e8       	ldi	r30, 0x81	; 129
+    7112:	f0 e0       	ldi	r31, 0x00	; 0
+    7114:	80 81       	ld	r24, Z
+    7116:	85 60       	ori	r24, 0x05	; 5
+    7118:	80 83       	st	Z, r24
+TCNT1=0;
+    711a:	10 92 85 00 	sts	0x0085, r1
+    711e:	10 92 84 00 	sts	0x0084, r1
+}
+    7122:	08 95       	ret
+
+00007124 <ADC_read>:
+
+uint32_t ADC_read(uint8_t channel){
+ADMUX  = 0xC0;
+    7124:	90 ec       	ldi	r25, 0xC0	; 192
+    7126:	90 93 7c 00 	sts	0x007C, r25
+ADMUX |= channel;
+    712a:	90 91 7c 00 	lds	r25, 0x007C
+    712e:	98 2b       	or	r25, r24
+    7130:	90 93 7c 00 	sts	0x007C, r25
+ADCSRA=(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2)|(1<<ADEN);
+    7134:	87 e8       	ldi	r24, 0x87	; 135
+    7136:	80 93 7a 00 	sts	0x007A, r24
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+    713a:	80 e2       	ldi	r24, 0x20	; 32
+    713c:	9e e4       	ldi	r25, 0x4E	; 78
+    713e:	01 97       	sbiw	r24, 0x01	; 1
+    7140:	f1 f7       	brne	.-4      	; 0x713e <ADC_read+0x1a>
+_delay_ms(10);
+ADCSRA|=(1<<ADSC);
+    7142:	80 91 7a 00 	lds	r24, 0x007A
+    7146:	80 64       	ori	r24, 0x40	; 64
+    7148:	80 93 7a 00 	sts	0x007A, r24
+while((ADCSRA & (1<<ADIF))==0);
+    714c:	80 91 7a 00 	lds	r24, 0x007A
+    7150:	84 ff       	sbrs	r24, 4
+    7152:	fc cf       	rjmp	.-8      	; 0x714c <ADC_read+0x28>
+uint16_t adc_val=ADCW;
+    7154:	80 91 78 00 	lds	r24, 0x0078
+    7158:	90 91 79 00 	lds	r25, 0x0079
+ADCSRA|=(1<<ADIF);
+    715c:	20 91 7a 00 	lds	r18, 0x007A
+    7160:	20 61       	ori	r18, 0x10	; 16
+    7162:	20 93 7a 00 	sts	0x007A, r18
+return adc_val;
+}
+    7166:	bc 01       	movw	r22, r24
+    7168:	80 e0       	ldi	r24, 0x00	; 0
+    716a:	90 e0       	ldi	r25, 0x00	; 0
+    716c:	08 95       	ret
+
+0000716e <UART_init>:
+
+
+void UART_init(uint32_t BAUD){
+    716e:	9b 01       	movw	r18, r22
+    7170:	ac 01       	movw	r20, r24
+uint32_t data_sum=0,adc_sum=0,adc_avg=0;
+
+
+
+void WDT_disable(void){
+cli();
+    7172:	f8 94       	cli
+MCUSR=0;
+    7174:	14 be       	out	0x34, r1	; 52
+WDTCSR|=(1<<WDCE)|(1<<WDE);
+    7176:	80 91 60 00 	lds	r24, 0x0060
+    717a:	88 61       	ori	r24, 0x18	; 24
+    717c:	80 93 60 00 	sts	0x0060, r24
+WDTCSR=0;
+    7180:	10 92 60 00 	sts	0x0060, r1
+}
+
+
+void UART_init(uint32_t BAUD){
+WDT_disable();
+uint16_t UBRR_VAL=(((F_CPU/16)/BAUD)-1);
+    7184:	60 e2       	ldi	r22, 0x20	; 32
+    7186:	71 ea       	ldi	r23, 0xA1	; 161
+    7188:	87 e0       	ldi	r24, 0x07	; 7
+    718a:	90 e0       	ldi	r25, 0x00	; 0
+    718c:	0e 94 1c 3e 	call	0x7c38	; 0x7c38 <__udivmodsi4>
+    7190:	21 50       	subi	r18, 0x01	; 1
+    7192:	30 40       	sbci	r19, 0x00	; 0
+UBRR0H=UBRR_VAL>>8;
+    7194:	30 93 c5 00 	sts	0x00C5, r19
+UBRR0L=UBRR_VAL;
+    7198:	20 93 c4 00 	sts	0x00C4, r18
+UCSR0B=(1<<RXEN0)|(1<<TXEN0);
+    719c:	88 e1       	ldi	r24, 0x18	; 24
+    719e:	80 93 c1 00 	sts	0x00C1, r24
+UCSR0C=(1<<UCSZ00)|(1<<UCSZ01);
+    71a2:	86 e0       	ldi	r24, 0x06	; 6
+    71a4:	80 93 c2 00 	sts	0x00C2, r24
+ADMUX =0x00;
+TCNT1=0;
+}
+
+void TIM1_init(void){
+TCCR1B|=(1<<CS10)|(1<<CS12);
+    71a8:	80 91 81 00 	lds	r24, 0x0081
+    71ac:	85 60       	ori	r24, 0x05	; 5
+    71ae:	80 93 81 00 	sts	0x0081, r24
+TCNT1=0;
+    71b2:	10 92 85 00 	sts	0x0085, r1
+    71b6:	10 92 84 00 	sts	0x0084, r1
+    71ba:	88 ee       	ldi	r24, 0xE8	; 232
+    71bc:	93 e0       	ldi	r25, 0x03	; 3
+    71be:	28 ec       	ldi	r18, 0xC8	; 200
+    71c0:	30 e0       	ldi	r19, 0x00	; 0
+    71c2:	f9 01       	movw	r30, r18
+    71c4:	31 97       	sbiw	r30, 0x01	; 1
+    71c6:	f1 f7       	brne	.-4      	; 0x71c4 <UART_init+0x56>
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+    71c8:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+    71ca:	d9 f7       	brne	.-10     	; 0x71c2 <UART_init+0x54>
+UBRR0L=UBRR_VAL;
+UCSR0B=(1<<RXEN0)|(1<<TXEN0);
+UCSR0C=(1<<UCSZ00)|(1<<UCSZ01);
+TIM1_init();
+_delay_ms(100);
+}
+    71cc:	08 95       	ret
+
+000071ce <UART_tx_single>:
+
+
+void UART_tx_single(unsigned char data){
+    71ce:	98 2f       	mov	r25, r24
+while((UCSR0A & (1<<UDRE0))==0);
+    71d0:	80 91 c0 00 	lds	r24, 0x00C0
+    71d4:	85 ff       	sbrs	r24, 5
+    71d6:	fc cf       	rjmp	.-8      	; 0x71d0 <UART_tx_single+0x2>
+UDR0=data;
+    71d8:	90 93 c6 00 	sts	0x00C6, r25
+}
+    71dc:	08 95       	ret
+
+000071de <boot_program_page>:
+   UART_tx_single(c[i]);
+   }
+}
+
+
+void boot_program_page (uint32_t page, uint8_t *buf){
+    71de:	0f 93       	push	r16
+    71e0:	1f 93       	push	r17
+    71e2:	cf 93       	push	r28
+    71e4:	df 93       	push	r29
+    71e6:	da 01       	movw	r26, r20
+
+    uint16_t i;
+    uint8_t sreg;
+    sreg = SREG;
+    71e8:	0f b7       	in	r16, 0x3f	; 63
+    cli();
+    71ea:	f8 94       	cli
+    eeprom_busy_wait ();
+    71ec:	f9 99       	sbic	0x1f, 1	; 31
+    71ee:	fe cf       	rjmp	.-4      	; 0x71ec <boot_program_page+0xe>
+    boot_page_erase (page);
+    71f0:	ab 01       	movw	r20, r22
+    71f2:	83 e0       	ldi	r24, 0x03	; 3
+    71f4:	fb 01       	movw	r30, r22
+    71f6:	80 93 57 00 	sts	0x0057, r24
+    71fa:	e8 95       	spm
+    boot_spm_busy_wait (); 
+    71fc:	07 b6       	in	r0, 0x37	; 55
+    71fe:	00 fc       	sbrc	r0, 0
+    7200:	fd cf       	rjmp	.-6      	; 0x71fc <boot_program_page+0x1e>
+    7202:	fa 01       	movw	r30, r20
+	
+    for (i=0; i<SPM_PAGESIZE; i+=2)
+    {
+        uint16_t w = *buf++;
+        w += (*buf++) << 8;
+        boot_page_fill (page + i, w);
+    7204:	11 e0       	ldi	r17, 0x01	; 1
+    cli();
+    eeprom_busy_wait ();
+    boot_page_erase (page);
+    boot_spm_busy_wait (); 
+	
+    for (i=0; i<SPM_PAGESIZE; i+=2)
+    7206:	ba 01       	movw	r22, r20
+    7208:	60 58       	subi	r22, 0x80	; 128
+    720a:	7f 4f       	sbci	r23, 0xFF	; 255
+    {
+        uint16_t w = *buf++;
+    720c:	8c 91       	ld	r24, X
+        w += (*buf++) << 8;
+    720e:	11 96       	adiw	r26, 0x01	; 1
+    7210:	3c 91       	ld	r19, X
+    7212:	11 97       	sbiw	r26, 0x01	; 1
+    7214:	20 e0       	ldi	r18, 0x00	; 0
+    7216:	e9 01       	movw	r28, r18
+    7218:	c8 0f       	add	r28, r24
+    721a:	d1 1d       	adc	r29, r1
+   UART_tx_single(c[i]);
+   }
+}
+
+
+void boot_program_page (uint32_t page, uint8_t *buf){
+    721c:	12 96       	adiw	r26, 0x02	; 2
+	
+    for (i=0; i<SPM_PAGESIZE; i+=2)
+    {
+        uint16_t w = *buf++;
+        w += (*buf++) << 8;
+        boot_page_fill (page + i, w);
+    721e:	0e 01       	movw	r0, r28
+    7220:	10 93 57 00 	sts	0x0057, r17
+    7224:	e8 95       	spm
+    7226:	11 24       	eor	r1, r1
+    7228:	32 96       	adiw	r30, 0x02	; 2
+    cli();
+    eeprom_busy_wait ();
+    boot_page_erase (page);
+    boot_spm_busy_wait (); 
+	
+    for (i=0; i<SPM_PAGESIZE; i+=2)
+    722a:	e6 17       	cp	r30, r22
+    722c:	f7 07       	cpc	r31, r23
+    722e:	71 f7       	brne	.-36     	; 0x720c <boot_program_page+0x2e>
+        uint16_t w = *buf++;
+        w += (*buf++) << 8;
+        boot_page_fill (page + i, w);
+    }
+	
+    boot_page_write (page); 
+    7230:	85 e0       	ldi	r24, 0x05	; 5
+    7232:	fa 01       	movw	r30, r20
+    7234:	80 93 57 00 	sts	0x0057, r24
+    7238:	e8 95       	spm
+    boot_spm_busy_wait();   
+    723a:	07 b6       	in	r0, 0x37	; 55
+    723c:	00 fc       	sbrc	r0, 0
+    723e:	fd cf       	rjmp	.-6      	; 0x723a <boot_program_page+0x5c>
+    boot_rww_enable ();
+    7240:	81 e1       	ldi	r24, 0x11	; 17
+    7242:	80 93 57 00 	sts	0x0057, r24
+    7246:	e8 95       	spm
+    SREG = sreg;
+    7248:	0f bf       	out	0x3f, r16	; 63
+}
+    724a:	df 91       	pop	r29
+    724c:	cf 91       	pop	r28
+    724e:	1f 91       	pop	r17
+    7250:	0f 91       	pop	r16
+    7252:	08 95       	ret
+
+00007254 <print_percent>:
+
+void print_percent(uint8_t x){
+    7254:	28 2f       	mov	r18, r24
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7256:	80 91 c0 00 	lds	r24, 0x00C0
+    725a:	85 ff       	sbrs	r24, 5
+    725c:	fc cf       	rjmp	.-8      	; 0x7256 <print_percent+0x2>
+UDR0=data;
+    725e:	8c e7       	ldi	r24, 0x7C	; 124
+    7260:	80 93 c6 00 	sts	0x00C6, r24
+    7264:	90 e0       	ldi	r25, 0x00	; 0
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7266:	3d e3       	ldi	r19, 0x3D	; 61
+    7268:	07 c0       	rjmp	.+14     	; 0x7278 <print_percent+0x24>
+    726a:	80 91 c0 00 	lds	r24, 0x00C0
+    726e:	85 ff       	sbrs	r24, 5
+    7270:	fc cf       	rjmp	.-8      	; 0x726a <print_percent+0x16>
+UDR0=data;
+    7272:	30 93 c6 00 	sts	0x00C6, r19
+    SREG = sreg;
+}
+
+void print_percent(uint8_t x){
+UART_tx_single('|');
+for(uint8_t i=0;i<x;i++){
+    7276:	9f 5f       	subi	r25, 0xFF	; 255
+    7278:	92 17       	cp	r25, r18
+    727a:	b8 f3       	brcs	.-18     	; 0x726a <print_percent+0x16>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    727c:	80 91 c0 00 	lds	r24, 0x00C0
+    7280:	85 ff       	sbrs	r24, 5
+    7282:	fc cf       	rjmp	.-8      	; 0x727c <print_percent+0x28>
+UDR0=data;
+    7284:	8c e7       	ldi	r24, 0x7C	; 124
+    7286:	80 93 c6 00 	sts	0x00C6, r24
+UART_tx_single('|');
+for(uint8_t i=0;i<x;i++){
+   UART_tx_single('=');
+   }
+UART_tx_single('|');
+}
+    728a:	08 95       	ret
+
+0000728c <chip_erase>:
+
+void chip_erase(uint8_t strt, uint8_t stop){
+    728c:	ef 92       	push	r14
+    728e:	ff 92       	push	r15
+    7290:	0f 93       	push	r16
+    7292:	1f 93       	push	r17
+    7294:	df 93       	push	r29
+    7296:	cf 93       	push	r28
+    7298:	cd b7       	in	r28, 0x3d	; 61
+    729a:	de b7       	in	r29, 0x3e	; 62
+    729c:	c0 58       	subi	r28, 0x80	; 128
+    729e:	d0 40       	sbci	r29, 0x00	; 0
+    72a0:	0f b6       	in	r0, 0x3f	; 63
+    72a2:	f8 94       	cli
+    72a4:	de bf       	out	0x3e, r29	; 62
+    72a6:	0f be       	out	0x3f, r0	; 63
+    72a8:	cd bf       	out	0x3d, r28	; 61
+    72aa:	06 2f       	mov	r16, r22
+    72ac:	90 e0       	ldi	r25, 0x00	; 0
+uint8_t erase_buf[BOOT_PAGE_SIZE_BYTES];
+for(uint8_t i=0;i<BOOT_PAGE_SIZE_BYTES;i++){
+    erase_buf[i]=0xFF;
+    72ae:	9e 01       	movw	r18, r28
+    72b0:	2f 5f       	subi	r18, 0xFF	; 255
+    72b2:	3f 4f       	sbci	r19, 0xFF	; 255
+    72b4:	4f ef       	ldi	r20, 0xFF	; 255
+    72b6:	f9 01       	movw	r30, r18
+    72b8:	e9 0f       	add	r30, r25
+    72ba:	f1 1d       	adc	r31, r1
+    72bc:	40 83       	st	Z, r20
+UART_tx_single('|');
+}
+
+void chip_erase(uint8_t strt, uint8_t stop){
+uint8_t erase_buf[BOOT_PAGE_SIZE_BYTES];
+for(uint8_t i=0;i<BOOT_PAGE_SIZE_BYTES;i++){
+    72be:	9f 5f       	subi	r25, 0xFF	; 255
+    72c0:	90 38       	cpi	r25, 0x80	; 128
+    72c2:	c9 f7       	brne	.-14     	; 0x72b6 <chip_erase+0x2a>
+    72c4:	18 2f       	mov	r17, r24
+    erase_buf[i]=0xFF;
+	}
+for(uint8_t page_erase=strt;page_erase<stop;page_erase++){
+    boot_program_page((page_erase*BOOT_PAGE_SIZE_BYTES),erase_buf);
+    72c6:	7e 01       	movw	r14, r28
+    72c8:	08 94       	sec
+    72ca:	e1 1c       	adc	r14, r1
+    72cc:	f1 1c       	adc	r15, r1
+    72ce:	0f c0       	rjmp	.+30     	; 0x72ee <chip_erase+0x62>
+    72d0:	61 2f       	mov	r22, r17
+    72d2:	70 e0       	ldi	r23, 0x00	; 0
+    72d4:	76 95       	lsr	r23
+    72d6:	76 2f       	mov	r23, r22
+    72d8:	66 27       	eor	r22, r22
+    72da:	77 95       	ror	r23
+    72dc:	67 95       	ror	r22
+    72de:	88 27       	eor	r24, r24
+    72e0:	77 fd       	sbrc	r23, 7
+    72e2:	80 95       	com	r24
+    72e4:	98 2f       	mov	r25, r24
+    72e6:	a7 01       	movw	r20, r14
+    72e8:	0e 94 ef 38 	call	0x71de	; 0x71de <boot_program_page>
+void chip_erase(uint8_t strt, uint8_t stop){
+uint8_t erase_buf[BOOT_PAGE_SIZE_BYTES];
+for(uint8_t i=0;i<BOOT_PAGE_SIZE_BYTES;i++){
+    erase_buf[i]=0xFF;
+	}
+for(uint8_t page_erase=strt;page_erase<stop;page_erase++){
+    72ec:	1f 5f       	subi	r17, 0xFF	; 255
+    72ee:	10 17       	cp	r17, r16
+    72f0:	78 f3       	brcs	.-34     	; 0x72d0 <chip_erase+0x44>
+    boot_program_page((page_erase*BOOT_PAGE_SIZE_BYTES),erase_buf);
+	}
+}
+    72f2:	c0 58       	subi	r28, 0x80	; 128
+    72f4:	df 4f       	sbci	r29, 0xFF	; 255
+    72f6:	0f b6       	in	r0, 0x3f	; 63
+    72f8:	f8 94       	cli
+    72fa:	de bf       	out	0x3e, r29	; 62
+    72fc:	0f be       	out	0x3f, r0	; 63
+    72fe:	cd bf       	out	0x3d, r28	; 61
+    7300:	cf 91       	pop	r28
+    7302:	df 91       	pop	r29
+    7304:	1f 91       	pop	r17
+    7306:	0f 91       	pop	r16
+    7308:	ff 90       	pop	r15
+    730a:	ef 90       	pop	r14
+    730c:	08 95       	ret
+
+0000730e <EEPROM_write>:
+								}
+return UDR0;
+}
+
+void EEPROM_write(uint16_t EE_address, unsigned char EE_data){
+while(EECR & (1<<EEPE));
+    730e:	f9 99       	sbic	0x1f, 1	; 31
+    7310:	fe cf       	rjmp	.-4      	; 0x730e <EEPROM_write>
+//while(SPMCR & (1<<SPMEN));
+EEAR=EE_address;
+    7312:	92 bd       	out	0x22, r25	; 34
+    7314:	81 bd       	out	0x21, r24	; 33
+EEDR=EE_data;
+    7316:	60 bd       	out	0x20, r22	; 32
+EECR=(1<<EEMPE);
+    7318:	84 e0       	ldi	r24, 0x04	; 4
+    731a:	8f bb       	out	0x1f, r24	; 31
+EECR|=(1<<EEPE);
+    731c:	f9 9a       	sbi	0x1f, 1	; 31
+}
+    731e:	08 95       	ret
+
+00007320 <EEPROM_read>:
+
+unsigned char EEPROM_read(uint16_t EE_address){
+while(EECR & (1<<EEPE));
+    7320:	f9 99       	sbic	0x1f, 1	; 31
+    7322:	fe cf       	rjmp	.-4      	; 0x7320 <EEPROM_read>
+EEAR=EE_address;
+    7324:	92 bd       	out	0x22, r25	; 34
+    7326:	81 bd       	out	0x21, r24	; 33
+EECR|=(1<<EERE);
+    7328:	f8 9a       	sbi	0x1f, 0	; 31
+return EEDR;
+    732a:	80 b5       	in	r24, 0x20	; 32
+}
+    732c:	08 95       	ret
+
+0000732e <LED_blink>:
+
+
+void LED_blink(uint8_t x){
+    732e:	90 e0       	ldi	r25, 0x00	; 0
+    7330:	20 e4       	ldi	r18, 0x40	; 64
+    7332:	3c e9       	ldi	r19, 0x9C	; 156
+    7334:	0b c0       	rjmp	.+22     	; 0x734c <LED_blink+0x1e>
+for(uint8_t i=0;i<x;i++){
+   LED_on();
+    7336:	52 9a       	sbi	0x0a, 2	; 10
+    7338:	5a 9a       	sbi	0x0b, 2	; 11
+    733a:	f9 01       	movw	r30, r18
+    733c:	31 97       	sbiw	r30, 0x01	; 1
+    733e:	f1 f7       	brne	.-4      	; 0x733c <LED_blink+0xe>
+   _delay_ms(20);
+   LED_off();
+    7340:	5a 98       	cbi	0x0b, 2	; 11
+    7342:	52 98       	cbi	0x0a, 2	; 10
+    7344:	f9 01       	movw	r30, r18
+    7346:	31 97       	sbiw	r30, 0x01	; 1
+    7348:	f1 f7       	brne	.-4      	; 0x7346 <LED_blink+0x18>
+return EEDR;
+}
+
+
+void LED_blink(uint8_t x){
+for(uint8_t i=0;i<x;i++){
+    734a:	9f 5f       	subi	r25, 0xFF	; 255
+    734c:	98 17       	cp	r25, r24
+    734e:	98 f3       	brcs	.-26     	; 0x7336 <LED_blink+0x8>
+   LED_on();
+   _delay_ms(20);
+   LED_off();
+   _delay_ms(20);
+   }
+}
+    7350:	08 95       	ret
+
+00007352 <UART_print_dec>:
+
+
+void UART_print_dec(uint16_t x){
+    7352:	8f 92       	push	r8
+    7354:	9f 92       	push	r9
+    7356:	af 92       	push	r10
+    7358:	bf 92       	push	r11
+    735a:	cf 92       	push	r12
+    735c:	df 92       	push	r13
+    735e:	ef 92       	push	r14
+    7360:	ff 92       	push	r15
+    7362:	0f 93       	push	r16
+    7364:	1f 93       	push	r17
+    7366:	df 93       	push	r29
+    7368:	cf 93       	push	r28
+    736a:	cd b7       	in	r28, 0x3d	; 61
+    736c:	de b7       	in	r29, 0x3e	; 62
+    736e:	8c 01       	movw	r16, r24
+  uint16_t z=x;
+  for(int j=(i-1);j>-1;j--) { num[j]=(z%10)+48; z=z/10;}
+  for(uint8_t k=0;k<i;k++)  { UART_tx_single(num[k]); }
+  }
+else{UART_tx_single('0');}
+}
+    7370:	ad b6       	in	r10, 0x3d	; 61
+    7372:	be b6       	in	r11, 0x3e	; 62
+   }
+}
+
+
+void UART_print_dec(uint16_t x){
+if(x!=0){
+    7374:	00 97       	sbiw	r24, 0x00	; 0
+    7376:	09 f4       	brne	.+2      	; 0x737a <UART_print_dec+0x28>
+    7378:	54 c0       	rjmp	.+168    	; 0x7422 <UART_print_dec+0xd0>
+    737a:	9d b6       	in	r9, 0x3d	; 61
+    737c:	8e b6       	in	r8, 0x3e	; 62
+    737e:	ee 24       	eor	r14, r14
+  uint8_t i=0;
+  uint16_t y=x;
+  while(y!=0){ y=y/10; i++; }
+    7380:	6a e0       	ldi	r22, 0x0A	; 10
+    7382:	70 e0       	ldi	r23, 0x00	; 0
+    7384:	0e 94 08 3e 	call	0x7c10	; 0x7c10 <__udivmodhi4>
+    7388:	cb 01       	movw	r24, r22
+    738a:	e3 94       	inc	r14
+    738c:	61 15       	cp	r22, r1
+    738e:	71 05       	cpc	r23, r1
+    7390:	b9 f7       	brne	.-18     	; 0x7380 <UART_print_dec+0x2e>
+  uint8_t num[i];
+    7392:	8e 2d       	mov	r24, r14
+    7394:	90 e0       	ldi	r25, 0x00	; 0
+    7396:	2d b7       	in	r18, 0x3d	; 61
+    7398:	3e b7       	in	r19, 0x3e	; 62
+    739a:	28 1b       	sub	r18, r24
+    739c:	39 0b       	sbc	r19, r25
+    739e:	0f b6       	in	r0, 0x3f	; 63
+    73a0:	f8 94       	cli
+    73a2:	3e bf       	out	0x3e, r19	; 62
+    73a4:	0f be       	out	0x3f, r0	; 63
+    73a6:	2d bf       	out	0x3d, r18	; 61
+    73a8:	cd b6       	in	r12, 0x3d	; 61
+    73aa:	de b6       	in	r13, 0x3e	; 62
+    73ac:	08 94       	sec
+    73ae:	c1 1c       	adc	r12, r1
+    73b0:	d1 1c       	adc	r13, r1
+  uint16_t z=x;
+  for(int j=(i-1);j>-1;j--) { num[j]=(z%10)+48; z=z/10;}
+    73b2:	9c 01       	movw	r18, r24
+    73b4:	21 50       	subi	r18, 0x01	; 1
+    73b6:	30 40       	sbci	r19, 0x00	; 0
+    73b8:	f6 01       	movw	r30, r12
+    73ba:	e2 0f       	add	r30, r18
+    73bc:	f3 1f       	adc	r31, r19
+    73be:	f0 2e       	mov	r15, r16
+    73c0:	41 2f       	mov	r20, r17
+    73c2:	13 c0       	rjmp	.+38     	; 0x73ea <UART_print_dec+0x98>
+    73c4:	8f 2d       	mov	r24, r15
+    73c6:	94 2f       	mov	r25, r20
+    73c8:	6a e0       	ldi	r22, 0x0A	; 10
+    73ca:	70 e0       	ldi	r23, 0x00	; 0
+    73cc:	0e 94 08 3e 	call	0x7c10	; 0x7c10 <__udivmodhi4>
+    73d0:	80 5d       	subi	r24, 0xD0	; 208
+    73d2:	80 83       	st	Z, r24
+    73d4:	8f 2d       	mov	r24, r15
+    73d6:	94 2f       	mov	r25, r20
+    73d8:	6a e0       	ldi	r22, 0x0A	; 10
+    73da:	70 e0       	ldi	r23, 0x00	; 0
+    73dc:	0e 94 08 3e 	call	0x7c10	; 0x7c10 <__udivmodhi4>
+    73e0:	f6 2e       	mov	r15, r22
+    73e2:	47 2f       	mov	r20, r23
+    73e4:	21 50       	subi	r18, 0x01	; 1
+    73e6:	30 40       	sbci	r19, 0x00	; 0
+    73e8:	31 97       	sbiw	r30, 0x01	; 1
+    73ea:	8f ef       	ldi	r24, 0xFF	; 255
+    73ec:	2f 3f       	cpi	r18, 0xFF	; 255
+    73ee:	38 07       	cpc	r19, r24
+    73f0:	49 f7       	brne	.-46     	; 0x73c4 <UART_print_dec+0x72>
+    73f2:	90 e0       	ldi	r25, 0x00	; 0
+    73f4:	0b c0       	rjmp	.+22     	; 0x740c <UART_print_dec+0xba>
+  for(uint8_t k=0;k<i;k++)  { UART_tx_single(num[k]); }
+    73f6:	f6 01       	movw	r30, r12
+    73f8:	e9 0f       	add	r30, r25
+    73fa:	f1 1d       	adc	r31, r1
+    73fc:	e0 81       	ld	r30, Z
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    73fe:	80 91 c0 00 	lds	r24, 0x00C0
+    7402:	85 ff       	sbrs	r24, 5
+    7404:	fc cf       	rjmp	.-8      	; 0x73fe <UART_print_dec+0xac>
+UDR0=data;
+    7406:	e0 93 c6 00 	sts	0x00C6, r30
+  uint16_t y=x;
+  while(y!=0){ y=y/10; i++; }
+  uint8_t num[i];
+  uint16_t z=x;
+  for(int j=(i-1);j>-1;j--) { num[j]=(z%10)+48; z=z/10;}
+  for(uint8_t k=0;k<i;k++)  { UART_tx_single(num[k]); }
+    740a:	9f 5f       	subi	r25, 0xFF	; 255
+    740c:	9e 15       	cp	r25, r14
+    740e:	98 f3       	brcs	.-26     	; 0x73f6 <UART_print_dec+0xa4>
+    7410:	89 2d       	mov	r24, r9
+    7412:	98 2d       	mov	r25, r8
+    7414:	9c 01       	movw	r18, r24
+    7416:	0f b6       	in	r0, 0x3f	; 63
+    7418:	f8 94       	cli
+    741a:	3e bf       	out	0x3e, r19	; 62
+    741c:	0f be       	out	0x3f, r0	; 63
+    741e:	2d bf       	out	0x3d, r18	; 61
+    7420:	07 c0       	rjmp	.+14     	; 0x7430 <UART_print_dec+0xde>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7422:	80 91 c0 00 	lds	r24, 0x00C0
+    7426:	85 ff       	sbrs	r24, 5
+    7428:	fc cf       	rjmp	.-8      	; 0x7422 <UART_print_dec+0xd0>
+UDR0=data;
+    742a:	80 e3       	ldi	r24, 0x30	; 48
+    742c:	80 93 c6 00 	sts	0x00C6, r24
+  uint16_t z=x;
+  for(int j=(i-1);j>-1;j--) { num[j]=(z%10)+48; z=z/10;}
+  for(uint8_t k=0;k<i;k++)  { UART_tx_single(num[k]); }
+  }
+else{UART_tx_single('0');}
+}
+    7430:	0f b6       	in	r0, 0x3f	; 63
+    7432:	f8 94       	cli
+    7434:	be be       	out	0x3e, r11	; 62
+    7436:	0f be       	out	0x3f, r0	; 63
+    7438:	ad be       	out	0x3d, r10	; 61
+    743a:	cf 91       	pop	r28
+    743c:	df 91       	pop	r29
+    743e:	1f 91       	pop	r17
+    7440:	0f 91       	pop	r16
+    7442:	ff 90       	pop	r15
+    7444:	ef 90       	pop	r14
+    7446:	df 90       	pop	r13
+    7448:	cf 90       	pop	r12
+    744a:	bf 90       	pop	r11
+    744c:	af 90       	pop	r10
+    744e:	9f 90       	pop	r9
+    7450:	8f 90       	pop	r8
+    7452:	08 95       	ret
+
+00007454 <UART_num>:
+
+void UART_num(uint16_t mv){
+    7454:	cf 93       	push	r28
+    7456:	df 93       	push	r29
+    7458:	ec 01       	movw	r28, r24
+UART_print_dec(mv/100);
+    745a:	64 e6       	ldi	r22, 0x64	; 100
+    745c:	70 e0       	ldi	r23, 0x00	; 0
+    745e:	0e 94 08 3e 	call	0x7c10	; 0x7c10 <__udivmodhi4>
+    7462:	cb 01       	movw	r24, r22
+    7464:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7468:	80 91 c0 00 	lds	r24, 0x00C0
+    746c:	85 ff       	sbrs	r24, 5
+    746e:	fc cf       	rjmp	.-8      	; 0x7468 <UART_num+0x14>
+UDR0=data;
+    7470:	8e e2       	ldi	r24, 0x2E	; 46
+    7472:	80 93 c6 00 	sts	0x00C6, r24
+}
+
+void UART_num(uint16_t mv){
+UART_print_dec(mv/100);
+UART_tx_single('.');
+uint8_t d2=mv%100;
+    7476:	ce 01       	movw	r24, r28
+    7478:	64 e6       	ldi	r22, 0x64	; 100
+    747a:	70 e0       	ldi	r23, 0x00	; 0
+    747c:	0e 94 08 3e 	call	0x7c10	; 0x7c10 <__udivmodhi4>
+    7480:	98 2f       	mov	r25, r24
+if(d2<10){UART_tx_single('0');}
+    7482:	8a 30       	cpi	r24, 0x0A	; 10
+    7484:	38 f4       	brcc	.+14     	; 0x7494 <UART_num+0x40>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7486:	80 91 c0 00 	lds	r24, 0x00C0
+    748a:	85 ff       	sbrs	r24, 5
+    748c:	fc cf       	rjmp	.-8      	; 0x7486 <UART_num+0x32>
+UDR0=data;
+    748e:	80 e3       	ldi	r24, 0x30	; 48
+    7490:	80 93 c6 00 	sts	0x00C6, r24
+void UART_num(uint16_t mv){
+UART_print_dec(mv/100);
+UART_tx_single('.');
+uint8_t d2=mv%100;
+if(d2<10){UART_tx_single('0');}
+UART_print_dec(d2);
+    7494:	89 2f       	mov	r24, r25
+    7496:	90 e0       	ldi	r25, 0x00	; 0
+    7498:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+}
+    749c:	df 91       	pop	r29
+    749e:	cf 91       	pop	r28
+    74a0:	08 95       	ret
+
+000074a2 <UART_tx>:
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+UDR0=data;
+}
+
+void UART_tx(char *c){
+    74a2:	9c 01       	movw	r18, r24
+for(uint8_t i=0;i<strlen(c);i++){
+    74a4:	dc 01       	movw	r26, r24
+    74a6:	0d 90       	ld	r0, X+
+    74a8:	00 20       	and	r0, r0
+    74aa:	e9 f7       	brne	.-6      	; 0x74a6 <UART_tx+0x4>
+    74ac:	11 97       	sbiw	r26, 0x01	; 1
+    74ae:	a8 1b       	sub	r26, r24
+    74b0:	b9 0b       	sbc	r27, r25
+    74b2:	90 e0       	ldi	r25, 0x00	; 0
+    74b4:	0a c0       	rjmp	.+20     	; 0x74ca <UART_tx+0x28>
+   UART_tx_single(c[i]);
+    74b6:	e2 0f       	add	r30, r18
+    74b8:	f3 1f       	adc	r31, r19
+    74ba:	40 81       	ld	r20, Z
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    74bc:	80 91 c0 00 	lds	r24, 0x00C0
+    74c0:	85 ff       	sbrs	r24, 5
+    74c2:	fc cf       	rjmp	.-8      	; 0x74bc <UART_tx+0x1a>
+UDR0=data;
+    74c4:	40 93 c6 00 	sts	0x00C6, r20
+}
+
+void UART_tx(char *c){
+for(uint8_t i=0;i<strlen(c);i++){
+    74c8:	9f 5f       	subi	r25, 0xFF	; 255
+    74ca:	e9 2f       	mov	r30, r25
+    74cc:	f0 e0       	ldi	r31, 0x00	; 0
+    74ce:	ea 17       	cp	r30, r26
+    74d0:	fb 07       	cpc	r31, r27
+    74d2:	88 f3       	brcs	.-30     	; 0x74b6 <UART_tx+0x14>
+   UART_tx_single(c[i]);
+   }
+}
+    74d4:	08 95       	ret
+
+000074d6 <UART_rx>:
+    boot_program_page((page_erase*BOOT_PAGE_SIZE_BYTES),erase_buf);
+	}
+}
+
+unsigned char UART_rx(void){
+TCNT1=0;
+    74d6:	10 92 85 00 	sts	0x0085, r1
+    74da:	10 92 84 00 	sts	0x0084, r1
+    74de:	1d c0       	rjmp	.+58     	; 0x751a <UART_rx+0x44>
+while((UCSR0A & (1<<RXC0))==0){
+                                  if(TCNT1>PROCESSOR_RX_WAIT){
+    74e0:	80 91 84 00 	lds	r24, 0x0084
+    74e4:	90 91 85 00 	lds	r25, 0x0085
+    74e8:	81 58       	subi	r24, 0x81	; 129
+    74ea:	95 42       	sbci	r25, 0x25	; 37
+    74ec:	b0 f0       	brcs	.+44     	; 0x751a <UART_rx+0x44>
+								        if(chip_erase_allowed==1)
+    74ee:	80 91 d0 03 	lds	r24, 0x03D0
+    74f2:	81 30       	cpi	r24, 0x01	; 1
+    74f4:	61 f4       	brne	.+24     	; 0x750e <UART_rx+0x38>
+										    {
+										     chip_erase(0,BOOT_PAGE_STRT_ADDR);
+    74f6:	80 e0       	ldi	r24, 0x00	; 0
+    74f8:	60 ee       	ldi	r22, 0xE0	; 224
+    74fa:	0e 94 46 39 	call	0x728c	; 0x728c <chip_erase>
+								             UART_tx("\nData incomplete!\n");
+    74fe:	80 e0       	ldi	r24, 0x00	; 0
+    7500:	91 e0       	ldi	r25, 0x01	; 1
+    7502:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+										     UART_tx("Chip Erased!\n");
+    7506:	83 e1       	ldi	r24, 0x13	; 19
+    7508:	91 e0       	ldi	r25, 0x01	; 1
+    750a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+											}
+								        LED_off();
+    750e:	5a 98       	cbi	0x0b, 2	; 11
+    7510:	52 98       	cbi	0x0a, 2	; 10
+										CLEAR_peripherals();
+    7512:	0e 94 75 38 	call	0x70ea	; 0x70ea <CLEAR_peripherals>
+										JUMP_APP();
+    7516:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
+	}
+}
+
+unsigned char UART_rx(void){
+TCNT1=0;
+while((UCSR0A & (1<<RXC0))==0){
+    751a:	80 91 c0 00 	lds	r24, 0x00C0
+    751e:	87 ff       	sbrs	r24, 7
+    7520:	df cf       	rjmp	.-66     	; 0x74e0 <UART_rx+0xa>
+										CLEAR_peripherals();
+										JUMP_APP();
+										}
+								  
+								}
+return UDR0;
+    7522:	80 91 c6 00 	lds	r24, 0x00C6
+}
+    7526:	08 95       	ret
+
+00007528 <Page_write_handler>:
+							}
+}
+
+
+
+void Page_write_handler(void){
+    7528:	df 92       	push	r13
+    752a:	ef 92       	push	r14
+    752c:	ff 92       	push	r15
+    752e:	0f 93       	push	r16
+    7530:	1f 93       	push	r17
+    7532:	cf 93       	push	r28
+    7534:	df 93       	push	r29
+EECR=(1<<EEMPE);
+EECR|=(1<<EEPE);
+}
+
+unsigned char EEPROM_read(uint16_t EE_address){
+while(EECR & (1<<EEPE));
+    7536:	f9 99       	sbic	0x1f, 1	; 31
+    7538:	fe cf       	rjmp	.-4      	; 0x7536 <Page_write_handler+0xe>
+EEAR=EE_address;
+    753a:	8f ef       	ldi	r24, 0xFF	; 255
+    753c:	93 e0       	ldi	r25, 0x03	; 3
+    753e:	92 bd       	out	0x22, r25	; 34
+    7540:	81 bd       	out	0x21, r24	; 33
+EECR|=(1<<EERE);
+    7542:	f8 9a       	sbi	0x1f, 0	; 31
+return EEDR;
+    7544:	80 b5       	in	r24, 0x20	; 32
+
+
+
+void Page_write_handler(void){
+
+adc_constant=EEPROM_read(1023);
+    7546:	90 e0       	ldi	r25, 0x00	; 0
+    7548:	90 93 ab 03 	sts	0x03AB, r25
+    754c:	80 93 aa 03 	sts	0x03AA, r24
+if(adc_constant==0xFF){adc_cal_available=0;}
+    7550:	8f 3f       	cpi	r24, 0xFF	; 255
+    7552:	91 05       	cpc	r25, r1
+    7554:	11 f4       	brne	.+4      	; 0x755a <Page_write_handler+0x32>
+    7556:	10 92 bd 03 	sts	0x03BD, r1
+
+ADC_read(ADC_SUPPLY);
+    755a:	87 e0       	ldi	r24, 0x07	; 7
+    755c:	0e 94 92 38 	call	0x7124	; 0x7124 <ADC_read>
+ADC_read(ADC_SUPPLY);
+    7560:	87 e0       	ldi	r24, 0x07	; 7
+    7562:	0e 94 92 38 	call	0x7124	; 0x7124 <ADC_read>
+    7566:	dd 24       	eor	r13, r13
+for(uint8_t i=0;i<16;i++){adc_sum+=ADC_read(ADC_SUPPLY);}
+    7568:	e0 90 d5 03 	lds	r14, 0x03D5
+    756c:	f0 90 d6 03 	lds	r15, 0x03D6
+    7570:	00 91 d7 03 	lds	r16, 0x03D7
+    7574:	10 91 d8 03 	lds	r17, 0x03D8
+    7578:	87 e0       	ldi	r24, 0x07	; 7
+    757a:	0e 94 92 38 	call	0x7124	; 0x7124 <ADC_read>
+    757e:	6e 0d       	add	r22, r14
+    7580:	7f 1d       	adc	r23, r15
+    7582:	80 1f       	adc	r24, r16
+    7584:	91 1f       	adc	r25, r17
+    7586:	60 93 d5 03 	sts	0x03D5, r22
+    758a:	70 93 d6 03 	sts	0x03D6, r23
+    758e:	80 93 d7 03 	sts	0x03D7, r24
+    7592:	90 93 d8 03 	sts	0x03D8, r25
+    7596:	d3 94       	inc	r13
+    7598:	20 e1       	ldi	r18, 0x10	; 16
+    759a:	d2 16       	cp	r13, r18
+    759c:	29 f7       	brne	.-54     	; 0x7568 <Page_write_handler+0x40>
+adc_supply=((adc_sum*300)/adc_constant)/16;
+    759e:	2c e2       	ldi	r18, 0x2C	; 44
+    75a0:	31 e0       	ldi	r19, 0x01	; 1
+    75a2:	40 e0       	ldi	r20, 0x00	; 0
+    75a4:	50 e0       	ldi	r21, 0x00	; 0
+    75a6:	0e 94 e9 3d 	call	0x7bd2	; 0x7bd2 <__mulsi3>
+    75aa:	20 91 aa 03 	lds	r18, 0x03AA
+    75ae:	30 91 ab 03 	lds	r19, 0x03AB
+    75b2:	44 27       	eor	r20, r20
+    75b4:	37 fd       	sbrc	r19, 7
+    75b6:	40 95       	com	r20
+    75b8:	54 2f       	mov	r21, r20
+    75ba:	0e 94 1c 3e 	call	0x7c38	; 0x7c38 <__udivmodsi4>
+    75be:	74 e0       	ldi	r23, 0x04	; 4
+    75c0:	56 95       	lsr	r21
+    75c2:	47 95       	ror	r20
+    75c4:	37 95       	ror	r19
+    75c6:	27 95       	ror	r18
+    75c8:	7a 95       	dec	r23
+    75ca:	d1 f7       	brne	.-12     	; 0x75c0 <Page_write_handler+0x98>
+    75cc:	20 93 c4 03 	sts	0x03C4, r18
+    75d0:	30 93 c5 03 	sts	0x03C5, r19
+    75d4:	40 93 c6 03 	sts	0x03C6, r20
+    75d8:	50 93 c7 03 	sts	0x03C7, r21
+adc_sum=0;
+    75dc:	10 92 d5 03 	sts	0x03D5, r1
+    75e0:	10 92 d6 03 	sts	0x03D6, r1
+    75e4:	10 92 d7 03 	sts	0x03D7, r1
+    75e8:	10 92 d8 03 	sts	0x03D8, r1
+
+ADC_read(ADC_VCC);
+    75ec:	86 e0       	ldi	r24, 0x06	; 6
+    75ee:	0e 94 92 38 	call	0x7124	; 0x7124 <ADC_read>
+ADC_read(ADC_VCC);
+    75f2:	86 e0       	ldi	r24, 0x06	; 6
+    75f4:	0e 94 92 38 	call	0x7124	; 0x7124 <ADC_read>
+    75f8:	dd 24       	eor	r13, r13
+for(uint8_t i=0;i<16;i++){adc_sum+=ADC_read(ADC_VCC);}
+    75fa:	e0 90 d5 03 	lds	r14, 0x03D5
+    75fe:	f0 90 d6 03 	lds	r15, 0x03D6
+    7602:	00 91 d7 03 	lds	r16, 0x03D7
+    7606:	10 91 d8 03 	lds	r17, 0x03D8
+    760a:	86 e0       	ldi	r24, 0x06	; 6
+    760c:	0e 94 92 38 	call	0x7124	; 0x7124 <ADC_read>
+    7610:	6e 0d       	add	r22, r14
+    7612:	7f 1d       	adc	r23, r15
+    7614:	80 1f       	adc	r24, r16
+    7616:	91 1f       	adc	r25, r17
+    7618:	60 93 d5 03 	sts	0x03D5, r22
+    761c:	70 93 d6 03 	sts	0x03D6, r23
+    7620:	80 93 d7 03 	sts	0x03D7, r24
+    7624:	90 93 d8 03 	sts	0x03D8, r25
+    7628:	d3 94       	inc	r13
+    762a:	e0 e1       	ldi	r30, 0x10	; 16
+    762c:	de 16       	cp	r13, r30
+    762e:	29 f7       	brne	.-54     	; 0x75fa <Page_write_handler+0xd2>
+adc_vcc=((adc_sum*300)/adc_constant)/16;
+    7630:	2c e2       	ldi	r18, 0x2C	; 44
+    7632:	31 e0       	ldi	r19, 0x01	; 1
+    7634:	40 e0       	ldi	r20, 0x00	; 0
+    7636:	50 e0       	ldi	r21, 0x00	; 0
+    7638:	0e 94 e9 3d 	call	0x7bd2	; 0x7bd2 <__mulsi3>
+    763c:	20 91 aa 03 	lds	r18, 0x03AA
+    7640:	30 91 ab 03 	lds	r19, 0x03AB
+    7644:	44 27       	eor	r20, r20
+    7646:	37 fd       	sbrc	r19, 7
+    7648:	40 95       	com	r20
+    764a:	54 2f       	mov	r21, r20
+    764c:	0e 94 1c 3e 	call	0x7c38	; 0x7c38 <__udivmodsi4>
+    7650:	64 e0       	ldi	r22, 0x04	; 4
+    7652:	56 95       	lsr	r21
+    7654:	47 95       	ror	r20
+    7656:	37 95       	ror	r19
+    7658:	27 95       	ror	r18
+    765a:	6a 95       	dec	r22
+    765c:	d1 f7       	brne	.-12     	; 0x7652 <Page_write_handler+0x12a>
+    765e:	20 93 c8 03 	sts	0x03C8, r18
+    7662:	30 93 c9 03 	sts	0x03C9, r19
+    7666:	40 93 ca 03 	sts	0x03CA, r20
+    766a:	50 93 cb 03 	sts	0x03CB, r21
+adc_sum=0;
+    766e:	10 92 d5 03 	sts	0x03D5, r1
+    7672:	10 92 d6 03 	sts	0x03D6, r1
+    7676:	10 92 d7 03 	sts	0x03D7, r1
+    767a:	10 92 d8 03 	sts	0x03D8, r1
+ADC_read(ADC_TEMP);
+    767e:	88 e0       	ldi	r24, 0x08	; 8
+    7680:	0e 94 92 38 	call	0x7124	; 0x7124 <ADC_read>
+ADC_read(ADC_TEMP);
+    7684:	88 e0       	ldi	r24, 0x08	; 8
+    7686:	0e 94 92 38 	call	0x7124	; 0x7124 <ADC_read>
+adc_temp  =(((ADC_read(ADC_TEMP)*782)/1000)-250);
+    768a:	88 e0       	ldi	r24, 0x08	; 8
+    768c:	0e 94 92 38 	call	0x7124	; 0x7124 <ADC_read>
+    7690:	2e e0       	ldi	r18, 0x0E	; 14
+    7692:	33 e0       	ldi	r19, 0x03	; 3
+    7694:	40 e0       	ldi	r20, 0x00	; 0
+    7696:	50 e0       	ldi	r21, 0x00	; 0
+    7698:	0e 94 e9 3d 	call	0x7bd2	; 0x7bd2 <__mulsi3>
+    769c:	28 ee       	ldi	r18, 0xE8	; 232
+    769e:	33 e0       	ldi	r19, 0x03	; 3
+    76a0:	40 e0       	ldi	r20, 0x00	; 0
+    76a2:	50 e0       	ldi	r21, 0x00	; 0
+    76a4:	0e 94 1c 3e 	call	0x7c38	; 0x7c38 <__udivmodsi4>
+    76a8:	2a 5f       	subi	r18, 0xFA	; 250
+    76aa:	30 40       	sbci	r19, 0x00	; 0
+    76ac:	40 40       	sbci	r20, 0x00	; 0
+    76ae:	50 40       	sbci	r21, 0x00	; 0
+    76b0:	20 93 cc 03 	sts	0x03CC, r18
+    76b4:	30 93 cd 03 	sts	0x03CD, r19
+    76b8:	40 93 ce 03 	sts	0x03CE, r20
+    76bc:	50 93 cf 03 	sts	0x03CF, r21
+    76c0:	2b ed       	ldi	r18, 0xDB	; 219
+    76c2:	33 e0       	ldi	r19, 0x03	; 3
+EECR=(1<<EEMPE);
+EECR|=(1<<EEPE);
+}
+
+unsigned char EEPROM_read(uint16_t EE_address){
+while(EECR & (1<<EEPE));
+    76c4:	f9 99       	sbic	0x1f, 1	; 31
+    76c6:	fe cf       	rjmp	.-4      	; 0x76c4 <Page_write_handler+0x19c>
+EEAR=EE_address;
+    76c8:	32 bd       	out	0x22, r19	; 34
+    76ca:	21 bd       	out	0x21, r18	; 33
+EECR|=(1<<EERE);
+    76cc:	f8 9a       	sbi	0x1f, 0	; 31
+return EEDR;
+    76ce:	80 b5       	in	r24, 0x20	; 32
+adc_sum=0;
+ADC_read(ADC_TEMP);
+ADC_read(ADC_TEMP);
+adc_temp  =(((ADC_read(ADC_TEMP)*782)/1000)-250);
+for(uint8_t i=0;i<8;i++){
+                           LAST_PROGRAMMED_DATE[i]=EEPROM_read(APP_INFO_STRT_ADDRESS+7+i);
+    76d0:	f9 01       	movw	r30, r18
+    76d2:	ee 55       	subi	r30, 0x5E	; 94
+    76d4:	ff 4f       	sbci	r31, 0xFF	; 255
+    76d6:	80 83       	st	Z, r24
+						   if(LAST_PROGRAMMED_DATE[i]==0xFF){last_programmed_info_available=0;}
+    76d8:	8f 3f       	cpi	r24, 0xFF	; 255
+    76da:	11 f4       	brne	.+4      	; 0x76e0 <Page_write_handler+0x1b8>
+    76dc:	10 92 bc 03 	sts	0x03BC, r1
+    76e0:	2f 5f       	subi	r18, 0xFF	; 255
+    76e2:	3f 4f       	sbci	r19, 0xFF	; 255
+adc_vcc=((adc_sum*300)/adc_constant)/16;
+adc_sum=0;
+ADC_read(ADC_TEMP);
+ADC_read(ADC_TEMP);
+adc_temp  =(((ADC_read(ADC_TEMP)*782)/1000)-250);
+for(uint8_t i=0;i<8;i++){
+    76e4:	f3 e0       	ldi	r31, 0x03	; 3
+    76e6:	23 3e       	cpi	r18, 0xE3	; 227
+    76e8:	3f 07       	cpc	r19, r31
+    76ea:	61 f7       	brne	.-40     	; 0x76c4 <Page_write_handler+0x19c>
+    76ec:	23 ee       	ldi	r18, 0xE3	; 227
+    76ee:	33 e0       	ldi	r19, 0x03	; 3
+EECR=(1<<EEMPE);
+EECR|=(1<<EEPE);
+}
+
+unsigned char EEPROM_read(uint16_t EE_address){
+while(EECR & (1<<EEPE));
+    76f0:	f9 99       	sbic	0x1f, 1	; 31
+    76f2:	fe cf       	rjmp	.-4      	; 0x76f0 <Page_write_handler+0x1c8>
+EEAR=EE_address;
+    76f4:	32 bd       	out	0x22, r19	; 34
+    76f6:	21 bd       	out	0x21, r18	; 33
+EECR|=(1<<EERE);
+    76f8:	f8 9a       	sbi	0x1f, 0	; 31
+return EEDR;
+    76fa:	80 b5       	in	r24, 0x20	; 32
+for(uint8_t i=0;i<8;i++){
+                           LAST_PROGRAMMED_DATE[i]=EEPROM_read(APP_INFO_STRT_ADDRESS+7+i);
+						   if(LAST_PROGRAMMED_DATE[i]==0xFF){last_programmed_info_available=0;}
+						  }
+for(uint8_t i=0;i<8;i++){
+                           LAST_PROGRAMMED_TIME[i]=EEPROM_read(APP_INFO_STRT_ADDRESS+15+i);
+    76fc:	f9 01       	movw	r30, r18
+    76fe:	ee 56       	subi	r30, 0x6E	; 110
+    7700:	ff 4f       	sbci	r31, 0xFF	; 255
+    7702:	80 83       	st	Z, r24
+						   if(LAST_PROGRAMMED_TIME[i]==0xFF){last_programmed_info_available=0;}
+    7704:	8f 3f       	cpi	r24, 0xFF	; 255
+    7706:	11 f4       	brne	.+4      	; 0x770c <Page_write_handler+0x1e4>
+    7708:	10 92 bc 03 	sts	0x03BC, r1
+    770c:	2f 5f       	subi	r18, 0xFF	; 255
+    770e:	3f 4f       	sbci	r19, 0xFF	; 255
+adc_temp  =(((ADC_read(ADC_TEMP)*782)/1000)-250);
+for(uint8_t i=0;i<8;i++){
+                           LAST_PROGRAMMED_DATE[i]=EEPROM_read(APP_INFO_STRT_ADDRESS+7+i);
+						   if(LAST_PROGRAMMED_DATE[i]==0xFF){last_programmed_info_available=0;}
+						  }
+for(uint8_t i=0;i<8;i++){
+    7710:	83 e0       	ldi	r24, 0x03	; 3
+    7712:	2b 3e       	cpi	r18, 0xEB	; 235
+    7714:	38 07       	cpc	r19, r24
+    7716:	61 f7       	brne	.-40     	; 0x76f0 <Page_write_handler+0x1c8>
+                           LAST_PROGRAMMED_TIME[i]=EEPROM_read(APP_INFO_STRT_ADDRESS+15+i);
+						   if(LAST_PROGRAMMED_TIME[i]==0xFF){last_programmed_info_available=0;}
+						 }
+
+chip_erase_allowed=1;
+    7718:	81 e0       	ldi	r24, 0x01	; 1
+    771a:	80 93 d0 03 	sts	0x03D0, r24
+if     (ENCRYPT_KEY_BUFFER[16]>(BOOT_PAGE_STRT_ADDR-1))
+    771e:	80 91 95 04 	lds	r24, 0x0495
+    7722:	80 3e       	cpi	r24, 0xE0	; 224
+    7724:	48 f0       	brcs	.+18     	; 0x7738 <Page_write_handler+0x210>
+                                                       {
+													     UART_tx("\nMax data size crossed!\n");
+    7726:	81 e2       	ldi	r24, 0x21	; 33
+    7728:	91 e0       	ldi	r25, 0x01	; 1
+    772a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+														 CLEAR_peripherals();
+    772e:	0e 94 75 38 	call	0x70ea	; 0x70ea <CLEAR_peripherals>
+														 JUMP_APP();
+    7732:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
+    7736:	0b c0       	rjmp	.+22     	; 0x774e <Page_write_handler+0x226>
+														}
+else if(ENCRYPT_KEY_BUFFER[16]==0)                    
+    7738:	88 23       	and	r24, r24
+    773a:	49 f4       	brne	.+18     	; 0x774e <Page_write_handler+0x226>
+                                   {
+								     chip_erase(0,BOOT_PAGE_STRT_ADDR);
+    773c:	60 ee       	ldi	r22, 0xE0	; 224
+    773e:	0e 94 46 39 	call	0x728c	; 0x728c <chip_erase>
+									 UART_tx("\nChip erase successful!\n");
+    7742:	8a e3       	ldi	r24, 0x3A	; 58
+    7744:	91 e0       	ldi	r25, 0x01	; 1
+    7746:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+									 WDT_reset();
+    774a:	0e 94 5c 38 	call	0x70b8	; 0x70b8 <WDT_reset>
+									}
+
+
+UART_tx("\n\n\n");
+    774e:	83 e5       	ldi	r24, 0x53	; 83
+    7750:	91 e0       	ldi	r25, 0x01	; 1
+    7752:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_tx("----------------------------------\n");
+    7756:	87 e5       	ldi	r24, 0x57	; 87
+    7758:	91 e0       	ldi	r25, 0x01	; 1
+    775a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_tx("        AVR OTA BOOTLOADER\n");
+    775e:	8b e7       	ldi	r24, 0x7B	; 123
+    7760:	91 e0       	ldi	r25, 0x01	; 1
+    7762:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_tx("----------------------------------\n");
+    7766:	87 e5       	ldi	r24, 0x57	; 87
+    7768:	91 e0       	ldi	r25, 0x01	; 1
+    776a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_tx("Author               : MFI_132097\n");
+    776e:	87 e9       	ldi	r24, 0x97	; 151
+    7770:	91 e0       	ldi	r25, 0x01	; 1
+    7772:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+
+UART_tx("Bootloader created   : ");
+    7776:	8a eb       	ldi	r24, 0xBA	; 186
+    7778:	91 e0       	ldi	r25, 0x01	; 1
+    777a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_print_dec(BOOT_DAY_CREATED);
+    777e:	82 e1       	ldi	r24, 0x12	; 18
+    7780:	90 e0       	ldi	r25, 0x00	; 0
+    7782:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7786:	80 91 c0 00 	lds	r24, 0x00C0
+    778a:	85 ff       	sbrs	r24, 5
+    778c:	fc cf       	rjmp	.-8      	; 0x7786 <Page_write_handler+0x25e>
+UDR0=data;
+    778e:	8f e2       	ldi	r24, 0x2F	; 47
+    7790:	80 93 c6 00 	sts	0x00C6, r24
+UART_tx("Author               : MFI_132097\n");
+
+UART_tx("Bootloader created   : ");
+UART_print_dec(BOOT_DAY_CREATED);
+UART_tx_single('/');
+UART_print_dec(BOOT_MONTH_CREATED);
+    7794:	87 e0       	ldi	r24, 0x07	; 7
+    7796:	90 e0       	ldi	r25, 0x00	; 0
+    7798:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    779c:	80 91 c0 00 	lds	r24, 0x00C0
+    77a0:	85 ff       	sbrs	r24, 5
+    77a2:	fc cf       	rjmp	.-8      	; 0x779c <Page_write_handler+0x274>
+UDR0=data;
+    77a4:	8f e2       	ldi	r24, 0x2F	; 47
+    77a6:	80 93 c6 00 	sts	0x00C6, r24
+UART_tx("Bootloader created   : ");
+UART_print_dec(BOOT_DAY_CREATED);
+UART_tx_single('/');
+UART_print_dec(BOOT_MONTH_CREATED);
+UART_tx_single('/');
+UART_print_dec(BOOT_YEAR_CREATED);
+    77aa:	83 e1       	ldi	r24, 0x13	; 19
+    77ac:	90 e0       	ldi	r25, 0x00	; 0
+    77ae:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    77b2:	80 91 c0 00 	lds	r24, 0x00C0
+    77b6:	85 ff       	sbrs	r24, 5
+    77b8:	fc cf       	rjmp	.-8      	; 0x77b2 <Page_write_handler+0x28a>
+UDR0=data;
+    77ba:	8a e0       	ldi	r24, 0x0A	; 10
+    77bc:	80 93 c6 00 	sts	0x00C6, r24
+UART_print_dec(BOOT_MONTH_CREATED);
+UART_tx_single('/');
+UART_print_dec(BOOT_YEAR_CREATED);
+UART_tx_single('\n');
+
+UART_tx("Bootloader version   : ");
+    77c0:	82 ed       	ldi	r24, 0xD2	; 210
+    77c2:	91 e0       	ldi	r25, 0x01	; 1
+    77c4:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_print_dec(BOOT_VERSION_MAJOR);
+    77c8:	84 e0       	ldi	r24, 0x04	; 4
+    77ca:	90 e0       	ldi	r25, 0x00	; 0
+    77cc:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    77d0:	80 91 c0 00 	lds	r24, 0x00C0
+    77d4:	85 ff       	sbrs	r24, 5
+    77d6:	fc cf       	rjmp	.-8      	; 0x77d0 <Page_write_handler+0x2a8>
+UDR0=data;
+    77d8:	8e e2       	ldi	r24, 0x2E	; 46
+    77da:	80 93 c6 00 	sts	0x00C6, r24
+UART_tx_single('\n');
+
+UART_tx("Bootloader version   : ");
+UART_print_dec(BOOT_VERSION_MAJOR);
+UART_tx_single('.');
+UART_print_dec(BOOT_VERSION_MINOR);
+    77de:	83 e2       	ldi	r24, 0x23	; 35
+    77e0:	90 e0       	ldi	r25, 0x00	; 0
+    77e2:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+UART_tx("\n");
+    77e6:	8a ee       	ldi	r24, 0xEA	; 234
+    77e8:	91 e0       	ldi	r25, 0x01	; 1
+    77ea:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+
+UART_tx("UART BAUD rate       : ");
+    77ee:	8c ee       	ldi	r24, 0xEC	; 236
+    77f0:	91 e0       	ldi	r25, 0x01	; 1
+    77f2:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_print_dec(BOOT_BAUD_RATE);
+    77f6:	80 e0       	ldi	r24, 0x00	; 0
+    77f8:	9b e4       	ldi	r25, 0x4B	; 75
+    77fa:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+UART_tx(" bps\n");
+    77fe:	84 e0       	ldi	r24, 0x04	; 4
+    7800:	92 e0       	ldi	r25, 0x02	; 2
+    7802:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+
+/*Voltage measurement start*/
+UART_tx("Supply voltage       : ");
+    7806:	8a e0       	ldi	r24, 0x0A	; 10
+    7808:	92 e0       	ldi	r25, 0x02	; 2
+    780a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+if(adc_cal_available==0){UART_tx("N/A\n");}
+    780e:	80 91 bd 03 	lds	r24, 0x03BD
+    7812:	88 23       	and	r24, r24
+    7814:	19 f4       	brne	.+6      	; 0x781c <Page_write_handler+0x2f4>
+    7816:	82 e2       	ldi	r24, 0x22	; 34
+    7818:	92 e0       	ldi	r25, 0x02	; 2
+    781a:	08 c0       	rjmp	.+16     	; 0x782c <Page_write_handler+0x304>
+else{ UART_num(adc_supply); UART_tx(" V\n");}
+    781c:	80 91 c4 03 	lds	r24, 0x03C4
+    7820:	90 91 c5 03 	lds	r25, 0x03C5
+    7824:	0e 94 2a 3a 	call	0x7454	; 0x7454 <UART_num>
+    7828:	87 e2       	ldi	r24, 0x27	; 39
+    782a:	92 e0       	ldi	r25, 0x02	; 2
+    782c:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+
+UART_tx("CPU voltage          : ");
+    7830:	8b e2       	ldi	r24, 0x2B	; 43
+    7832:	92 e0       	ldi	r25, 0x02	; 2
+    7834:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+if(adc_cal_available==0){UART_tx("N/A\n");}
+    7838:	80 91 bd 03 	lds	r24, 0x03BD
+    783c:	88 23       	and	r24, r24
+    783e:	19 f4       	brne	.+6      	; 0x7846 <Page_write_handler+0x31e>
+    7840:	82 e2       	ldi	r24, 0x22	; 34
+    7842:	92 e0       	ldi	r25, 0x02	; 2
+    7844:	08 c0       	rjmp	.+16     	; 0x7856 <Page_write_handler+0x32e>
+else{ UART_num(adc_vcc); UART_tx(" V\n");}
+    7846:	80 91 c8 03 	lds	r24, 0x03C8
+    784a:	90 91 c9 03 	lds	r25, 0x03C9
+    784e:	0e 94 2a 3a 	call	0x7454	; 0x7454 <UART_num>
+    7852:	87 e2       	ldi	r24, 0x27	; 39
+    7854:	92 e0       	ldi	r25, 0x02	; 2
+    7856:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+
+UART_tx("CPU temperature      : ");
+    785a:	83 e4       	ldi	r24, 0x43	; 67
+    785c:	92 e0       	ldi	r25, 0x02	; 2
+    785e:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_print_dec(adc_temp);
+    7862:	80 91 cc 03 	lds	r24, 0x03CC
+    7866:	90 91 cd 03 	lds	r25, 0x03CD
+    786a:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+UART_tx("'C\n");
+    786e:	8b e5       	ldi	r24, 0x5B	; 91
+    7870:	92 e0       	ldi	r25, 0x02	; 2
+    7872:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+/*Voltage measurement end*/
+
+
+UART_tx("Last programmed      : ");
+    7876:	8f e5       	ldi	r24, 0x5F	; 95
+    7878:	92 e0       	ldi	r25, 0x02	; 2
+    787a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+if(last_programmed_info_available==0){UART_tx("N/A");}
+    787e:	80 91 bc 03 	lds	r24, 0x03BC
+    7882:	88 23       	and	r24, r24
+    7884:	29 f4       	brne	.+10     	; 0x7890 <Page_write_handler+0x368>
+    7886:	87 e7       	ldi	r24, 0x77	; 119
+    7888:	92 e0       	ldi	r25, 0x02	; 2
+    788a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+    788e:	0e c0       	rjmp	.+28     	; 0x78ac <Page_write_handler+0x384>
+    7890:	ed e7       	ldi	r30, 0x7D	; 125
+    7892:	f4 e0       	ldi	r31, 0x04	; 4
+else{for(uint8_t i=0;i<8;i++){UART_tx_single(LAST_PROGRAMMED_DATE[i]);}}
+    7894:	90 81       	ld	r25, Z
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7896:	80 91 c0 00 	lds	r24, 0x00C0
+    789a:	85 ff       	sbrs	r24, 5
+    789c:	fc cf       	rjmp	.-8      	; 0x7896 <Page_write_handler+0x36e>
+UDR0=data;
+    789e:	90 93 c6 00 	sts	0x00C6, r25
+    78a2:	31 96       	adiw	r30, 0x01	; 1
+/*Voltage measurement end*/
+
+
+UART_tx("Last programmed      : ");
+if(last_programmed_info_available==0){UART_tx("N/A");}
+else{for(uint8_t i=0;i<8;i++){UART_tx_single(LAST_PROGRAMMED_DATE[i]);}}
+    78a4:	24 e0       	ldi	r18, 0x04	; 4
+    78a6:	e5 38       	cpi	r30, 0x85	; 133
+    78a8:	f2 07       	cpc	r31, r18
+    78aa:	a1 f7       	brne	.-24     	; 0x7894 <Page_write_handler+0x36c>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    78ac:	80 91 c0 00 	lds	r24, 0x00C0
+    78b0:	85 ff       	sbrs	r24, 5
+    78b2:	fc cf       	rjmp	.-8      	; 0x78ac <Page_write_handler+0x384>
+UDR0=data;
+    78b4:	8a e0       	ldi	r24, 0x0A	; 10
+    78b6:	80 93 c6 00 	sts	0x00C6, r24
+
+UART_tx("Last programmed      : ");
+if(last_programmed_info_available==0){UART_tx("N/A");}
+else{for(uint8_t i=0;i<8;i++){UART_tx_single(LAST_PROGRAMMED_DATE[i]);}}
+UART_tx_single('\n');
+UART_tx("                       ");
+    78ba:	8b e7       	ldi	r24, 0x7B	; 123
+    78bc:	92 e0       	ldi	r25, 0x02	; 2
+    78be:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+if(last_programmed_info_available==0){UART_tx("N/A");}
+    78c2:	80 91 bc 03 	lds	r24, 0x03BC
+    78c6:	88 23       	and	r24, r24
+    78c8:	29 f4       	brne	.+10     	; 0x78d4 <Page_write_handler+0x3ac>
+    78ca:	87 e7       	ldi	r24, 0x77	; 119
+    78cc:	92 e0       	ldi	r25, 0x02	; 2
+    78ce:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+    78d2:	0e c0       	rjmp	.+28     	; 0x78f0 <Page_write_handler+0x3c8>
+    78d4:	e5 e7       	ldi	r30, 0x75	; 117
+    78d6:	f4 e0       	ldi	r31, 0x04	; 4
+else{for(uint8_t i=0;i<8;i++){UART_tx_single(LAST_PROGRAMMED_TIME[i]);}}
+    78d8:	90 81       	ld	r25, Z
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    78da:	80 91 c0 00 	lds	r24, 0x00C0
+    78de:	85 ff       	sbrs	r24, 5
+    78e0:	fc cf       	rjmp	.-8      	; 0x78da <Page_write_handler+0x3b2>
+UDR0=data;
+    78e2:	90 93 c6 00 	sts	0x00C6, r25
+    78e6:	31 96       	adiw	r30, 0x01	; 1
+if(last_programmed_info_available==0){UART_tx("N/A");}
+else{for(uint8_t i=0;i<8;i++){UART_tx_single(LAST_PROGRAMMED_DATE[i]);}}
+UART_tx_single('\n');
+UART_tx("                       ");
+if(last_programmed_info_available==0){UART_tx("N/A");}
+else{for(uint8_t i=0;i<8;i++){UART_tx_single(LAST_PROGRAMMED_TIME[i]);}}
+    78e8:	84 e0       	ldi	r24, 0x04	; 4
+    78ea:	ed 37       	cpi	r30, 0x7D	; 125
+    78ec:	f8 07       	cpc	r31, r24
+    78ee:	a1 f7       	brne	.-24     	; 0x78d8 <Page_write_handler+0x3b0>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    78f0:	80 91 c0 00 	lds	r24, 0x00C0
+    78f4:	85 ff       	sbrs	r24, 5
+    78f6:	fc cf       	rjmp	.-8      	; 0x78f0 <Page_write_handler+0x3c8>
+UDR0=data;
+    78f8:	8a e0       	ldi	r24, 0x0A	; 10
+    78fa:	80 93 c6 00 	sts	0x00C6, r24
+UART_tx("                       ");
+if(last_programmed_info_available==0){UART_tx("N/A");}
+else{for(uint8_t i=0;i<8;i++){UART_tx_single(LAST_PROGRAMMED_TIME[i]);}}
+UART_tx_single('\n');
+
+UART_tx("Currently writing    : ");
+    78fe:	83 e9       	ldi	r24, 0x93	; 147
+    7900:	92 e0       	ldi	r25, 0x02	; 2
+    7902:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_print_dec(ENCRYPT_KEY_BUFFER[16]);
+    7906:	80 91 95 04 	lds	r24, 0x0495
+    790a:	90 e0       	ldi	r25, 0x00	; 0
+    790c:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+UART_tx(" pages\n");
+    7910:	8b ea       	ldi	r24, 0xAB	; 171
+    7912:	92 e0       	ldi	r25, 0x02	; 2
+    7914:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_tx("                       ");
+    7918:	8b e7       	ldi	r24, 0x7B	; 123
+    791a:	92 e0       	ldi	r25, 0x02	; 2
+    791c:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_print_dec(ENCRYPT_KEY_BUFFER[16]*128);
+    7920:	80 91 95 04 	lds	r24, 0x0495
+    7924:	90 e0       	ldi	r25, 0x00	; 0
+    7926:	96 95       	lsr	r25
+    7928:	98 2f       	mov	r25, r24
+    792a:	88 27       	eor	r24, r24
+    792c:	97 95       	ror	r25
+    792e:	87 95       	ror	r24
+    7930:	0e 94 a9 39 	call	0x7352	; 0x7352 <UART_print_dec>
+UART_tx(" bytes\n");
+    7934:	83 eb       	ldi	r24, 0xB3	; 179
+    7936:	92 e0       	ldi	r25, 0x02	; 2
+    7938:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+
+
+if(adc_vcc<300)
+    793c:	80 91 c8 03 	lds	r24, 0x03C8
+    7940:	90 91 c9 03 	lds	r25, 0x03C9
+    7944:	a0 91 ca 03 	lds	r26, 0x03CA
+    7948:	b0 91 cb 03 	lds	r27, 0x03CB
+    794c:	8c 52       	subi	r24, 0x2C	; 44
+    794e:	91 40       	sbci	r25, 0x01	; 1
+    7950:	a0 40       	sbci	r26, 0x00	; 0
+    7952:	b0 40       	sbci	r27, 0x00	; 0
+    7954:	40 f4       	brcc	.+16     	; 0x7966 <Page_write_handler+0x43e>
+                {
+				 
+				 UART_tx("\nCPU voltage is below safe zone!\n");
+    7956:	8b eb       	ldi	r24, 0xBB	; 187
+    7958:	92 e0       	ldi	r25, 0x02	; 2
+    795a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+				 UART_tx("Not recommended to enter DFU!\n\n");
+    795e:	8d ed       	ldi	r24, 0xDD	; 221
+    7960:	92 e0       	ldi	r25, 0x02	; 2
+    7962:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+				 //WDT_reset();
+				 }
+				 
+UART_tx("Writing new firmware image...\n");
+    7966:	8d ef       	ldi	r24, 0xFD	; 253
+    7968:	92 e0       	ldi	r25, 0x02	; 2
+    796a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+print_percent(ENCRYPT_KEY_BUFFER[16]);
+    796e:	80 91 95 04 	lds	r24, 0x0495
+    7972:	0e 94 2a 39 	call	0x7254	; 0x7254 <print_percent>
+UART_tx("\n|");
+    7976:	8c e1       	ldi	r24, 0x1C	; 28
+    7978:	93 e0       	ldi	r25, 0x03	; 3
+    797a:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+data_sum=0;
+    797e:	10 92 d1 03 	sts	0x03D1, r1
+    7982:	10 92 d2 03 	sts	0x03D2, r1
+    7986:	10 92 d3 03 	sts	0x03D3, r1
+    798a:	10 92 d4 03 	sts	0x03D4, r1
+    798e:	05 e8       	ldi	r16, 0x85	; 133
+    7990:	14 e0       	ldi	r17, 0x04	; 4
+    7992:	f8 01       	movw	r30, r16
+
+
+for(uint8_t i=0;i<16;i++){ENCRYPT_KEY_BUFFER[i]=0;}
+    7994:	11 92       	st	Z+, r1
+    7996:	24 e0       	ldi	r18, 0x04	; 4
+    7998:	e5 39       	cpi	r30, 0x95	; 149
+    799a:	f2 07       	cpc	r31, r18
+    799c:	d9 f7       	brne	.-10     	; 0x7994 <Page_write_handler+0x46c>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    799e:	80 91 c0 00 	lds	r24, 0x00C0
+    79a2:	85 ff       	sbrs	r24, 5
+    79a4:	fc cf       	rjmp	.-8      	; 0x799e <Page_write_handler+0x476>
+UDR0=data;
+    79a6:	8c e1       	ldi	r24, 0x1C	; 28
+    79a8:	80 93 c6 00 	sts	0x00C6, r24
+    79ac:	ee 24       	eor	r14, r14
+UART_tx_single(BOOT_READY_FOR_DATA);
+
+
+for(uint8_t page=0;page<ENCRYPT_KEY_BUFFER[16];page++){
+        for(uint16_t i=0;i<BOOT_PAGE_SIZE_BYTES;i++){
+		       BOOT_buffer[i]=UART_rx();
+    79ae:	2d e3       	ldi	r18, 0x3D	; 61
+    79b0:	d2 2e       	mov	r13, r18
+    79b2:	31 c0       	rjmp	.+98     	; 0x7a16 <Page_write_handler+0x4ee>
+    79b4:	0e 94 6b 3a 	call	0x74d6	; 0x74d6 <UART_rx>
+    79b8:	89 93       	st	Y+, r24
+			   data_sum+=BOOT_buffer[i];
+    79ba:	20 91 d1 03 	lds	r18, 0x03D1
+    79be:	30 91 d2 03 	lds	r19, 0x03D2
+    79c2:	40 91 d3 03 	lds	r20, 0x03D3
+    79c6:	50 91 d4 03 	lds	r21, 0x03D4
+    79ca:	28 0f       	add	r18, r24
+    79cc:	31 1d       	adc	r19, r1
+    79ce:	41 1d       	adc	r20, r1
+    79d0:	51 1d       	adc	r21, r1
+    79d2:	20 93 d1 03 	sts	0x03D1, r18
+    79d6:	30 93 d2 03 	sts	0x03D2, r19
+    79da:	40 93 d3 03 	sts	0x03D3, r20
+    79de:	50 93 d4 03 	sts	0x03D4, r21
+
+UART_tx_single(BOOT_READY_FOR_DATA);
+
+
+for(uint8_t page=0;page<ENCRYPT_KEY_BUFFER[16];page++){
+        for(uint16_t i=0;i<BOOT_PAGE_SIZE_BYTES;i++){
+    79e2:	84 e0       	ldi	r24, 0x04	; 4
+    79e4:	cd 35       	cpi	r28, 0x5D	; 93
+    79e6:	d8 07       	cpc	r29, r24
+    79e8:	29 f7       	brne	.-54     	; 0x79b4 <Page_write_handler+0x48c>
+		       BOOT_buffer[i]=UART_rx();
+			   data_sum+=BOOT_buffer[i];
+			   }
+		boot_program_page((page*BOOT_PAGE_SIZE_BYTES),BOOT_buffer);
+    79ea:	6e 2d       	mov	r22, r14
+    79ec:	70 e0       	ldi	r23, 0x00	; 0
+    79ee:	76 95       	lsr	r23
+    79f0:	76 2f       	mov	r23, r22
+    79f2:	66 27       	eor	r22, r22
+    79f4:	77 95       	ror	r23
+    79f6:	67 95       	ror	r22
+    79f8:	88 27       	eor	r24, r24
+    79fa:	77 fd       	sbrc	r23, 7
+    79fc:	80 95       	com	r24
+    79fe:	98 2f       	mov	r25, r24
+    7a00:	4d ed       	ldi	r20, 0xDD	; 221
+    7a02:	53 e0       	ldi	r21, 0x03	; 3
+    7a04:	0e 94 ef 38 	call	0x71de	; 0x71de <boot_program_page>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7a08:	80 91 c0 00 	lds	r24, 0x00C0
+    7a0c:	85 ff       	sbrs	r24, 5
+    7a0e:	fc cf       	rjmp	.-8      	; 0x7a08 <Page_write_handler+0x4e0>
+UDR0=data;
+    7a10:	d0 92 c6 00 	sts	0x00C6, r13
+for(uint8_t i=0;i<16;i++){ENCRYPT_KEY_BUFFER[i]=0;}
+
+UART_tx_single(BOOT_READY_FOR_DATA);
+
+
+for(uint8_t page=0;page<ENCRYPT_KEY_BUFFER[16];page++){
+    7a14:	e3 94       	inc	r14
+    7a16:	80 91 95 04 	lds	r24, 0x0495
+    7a1a:	e8 16       	cp	r14, r24
+    7a1c:	18 f4       	brcc	.+6      	; 0x7a24 <Page_write_handler+0x4fc>
+    7a1e:	cd ed       	ldi	r28, 0xDD	; 221
+    7a20:	d3 e0       	ldi	r29, 0x03	; 3
+    7a22:	c8 cf       	rjmp	.-112    	; 0x79b4 <Page_write_handler+0x48c>
+    7a24:	cd e5       	ldi	r28, 0x5D	; 93
+    7a26:	d4 e0       	ldi	r29, 0x04	; 4
+			   }
+		boot_program_page((page*BOOT_PAGE_SIZE_BYTES),BOOT_buffer);
+		UART_tx_single('=');
+	}
+	
+for(uint8_t i=0;i<APP_INFO_LENGTH;i++){app_info[i]=UART_rx();}
+    7a28:	0e 94 6b 3a 	call	0x74d6	; 0x74d6 <UART_rx>
+    7a2c:	89 93       	st	Y+, r24
+    7a2e:	e4 e0       	ldi	r30, 0x04	; 4
+    7a30:	c5 37       	cpi	r28, 0x75	; 117
+    7a32:	de 07       	cpc	r29, r30
+    7a34:	c9 f7       	brne	.-14     	; 0x7a28 <Page_write_handler+0x500>
+for(uint8_t i=0;i<16;i++){ENCRYPT_KEY_BUFFER[i]=UART_rx();}
+    7a36:	0e 94 6b 3a 	call	0x74d6	; 0x74d6 <UART_rx>
+    7a3a:	f8 01       	movw	r30, r16
+    7a3c:	81 93       	st	Z+, r24
+    7a3e:	8f 01       	movw	r16, r30
+    7a40:	f4 e0       	ldi	r31, 0x04	; 4
+    7a42:	05 39       	cpi	r16, 0x95	; 149
+    7a44:	1f 07       	cpc	r17, r31
+    7a46:	b9 f7       	brne	.-18     	; 0x7a36 <Page_write_handler+0x50e>
+UART_tx("|\n");
+    7a48:	8f e1       	ldi	r24, 0x1F	; 31
+    7a4a:	93 e0       	ldi	r25, 0x03	; 3
+    7a4c:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+    7a50:	c0 e0       	ldi	r28, 0x00	; 0
+    7a52:	d0 e0       	ldi	r29, 0x00	; 0
+
+for(uint8_t i=0;i<16;i++){
+                            if(ENCRYPT_KEY[i]!=ENCRYPT_KEY_BUFFER[i])
+    7a54:	fe 01       	movw	r30, r28
+    7a56:	e4 55       	subi	r30, 0x54	; 84
+    7a58:	fc 4f       	sbci	r31, 0xFC	; 252
+    7a5a:	de 01       	movw	r26, r28
+    7a5c:	ab 57       	subi	r26, 0x7B	; 123
+    7a5e:	bb 4f       	sbci	r27, 0xFB	; 251
+    7a60:	90 81       	ld	r25, Z
+    7a62:	8c 91       	ld	r24, X
+    7a64:	98 17       	cp	r25, r24
+    7a66:	81 f0       	breq	.+32     	; 0x7a88 <Page_write_handler+0x560>
+							   {
+							      chip_erase(0,BOOT_PAGE_STRT_ADDR);
+    7a68:	80 e0       	ldi	r24, 0x00	; 0
+    7a6a:	60 ee       	ldi	r22, 0xE0	; 224
+    7a6c:	0e 94 46 39 	call	0x728c	; 0x728c <chip_erase>
+                                  UART_tx("Checksum Error!\n");
+    7a70:	82 e2       	ldi	r24, 0x22	; 34
+    7a72:	93 e0       	ldi	r25, 0x03	; 3
+    7a74:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+	                              UART_tx("Firmware write failed!\n");
+    7a78:	83 e3       	ldi	r24, 0x33	; 51
+    7a7a:	93 e0       	ldi	r25, 0x03	; 3
+    7a7c:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+								  CLEAR_peripherals();
+    7a80:	0e 94 75 38 	call	0x70ea	; 0x70ea <CLEAR_peripherals>
+								  JUMP_APP();
+    7a84:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
+    7a88:	21 96       	adiw	r28, 0x01	; 1
+	
+for(uint8_t i=0;i<APP_INFO_LENGTH;i++){app_info[i]=UART_rx();}
+for(uint8_t i=0;i<16;i++){ENCRYPT_KEY_BUFFER[i]=UART_rx();}
+UART_tx("|\n");
+
+for(uint8_t i=0;i<16;i++){
+    7a8a:	c0 31       	cpi	r28, 0x10	; 16
+    7a8c:	d1 05       	cpc	r29, r1
+    7a8e:	11 f7       	brne	.-60     	; 0x7a54 <Page_write_handler+0x52c>
+	                              UART_tx("Firmware write failed!\n");
+								  CLEAR_peripherals();
+								  JUMP_APP();
+						        }
+							}
+chip_erase(ENCRYPT_KEY_BUFFER[16],BOOT_PAGE_STRT_ADDR);
+    7a90:	80 91 95 04 	lds	r24, 0x0495
+    7a94:	60 ee       	ldi	r22, 0xE0	; 224
+    7a96:	0e 94 46 39 	call	0x728c	; 0x728c <chip_erase>
+    7a9a:	c4 ed       	ldi	r28, 0xD4	; 212
+    7a9c:	d3 e0       	ldi	r29, 0x03	; 3
+for(uint8_t i=0;i<(APP_INFO_LENGTH-1);i++){EEPROM_write(APP_INFO_STRT_ADDRESS+i,app_info[i]);}
+    7a9e:	fe 01       	movw	r30, r28
+    7aa0:	e7 57       	subi	r30, 0x77	; 119
+    7aa2:	ff 4f       	sbci	r31, 0xFF	; 255
+    7aa4:	ce 01       	movw	r24, r28
+    7aa6:	60 81       	ld	r22, Z
+    7aa8:	0e 94 87 39 	call	0x730e	; 0x730e <EEPROM_write>
+    7aac:	21 96       	adiw	r28, 0x01	; 1
+    7aae:	23 e0       	ldi	r18, 0x03	; 3
+    7ab0:	cb 3e       	cpi	r28, 0xEB	; 235
+    7ab2:	d2 07       	cpc	r29, r18
+    7ab4:	a1 f7       	brne	.-24     	; 0x7a9e <Page_write_handler+0x576>
+UART_tx_single(data_sum & 0x7F);
+    7ab6:	90 91 d1 03 	lds	r25, 0x03D1
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7aba:	80 91 c0 00 	lds	r24, 0x00C0
+    7abe:	85 ff       	sbrs	r24, 5
+    7ac0:	fc cf       	rjmp	.-8      	; 0x7aba <Page_write_handler+0x592>
+								  JUMP_APP();
+						        }
+							}
+chip_erase(ENCRYPT_KEY_BUFFER[16],BOOT_PAGE_STRT_ADDR);
+for(uint8_t i=0;i<(APP_INFO_LENGTH-1);i++){EEPROM_write(APP_INFO_STRT_ADDRESS+i,app_info[i]);}
+UART_tx_single(data_sum & 0x7F);
+    7ac2:	9f 77       	andi	r25, 0x7F	; 127
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+UDR0=data;
+    7ac4:	90 93 c6 00 	sts	0x00C6, r25
+						        }
+							}
+chip_erase(ENCRYPT_KEY_BUFFER[16],BOOT_PAGE_STRT_ADDR);
+for(uint8_t i=0;i<(APP_INFO_LENGTH-1);i++){EEPROM_write(APP_INFO_STRT_ADDRESS+i,app_info[i]);}
+UART_tx_single(data_sum & 0x7F);
+UART_tx("\nSuccess!\n");
+    7ac8:	8b e4       	ldi	r24, 0x4B	; 75
+    7aca:	93 e0       	ldi	r25, 0x03	; 3
+    7acc:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_tx("Starting Application\n");
+    7ad0:	86 e5       	ldi	r24, 0x56	; 86
+    7ad2:	93 e0       	ldi	r25, 0x03	; 3
+    7ad4:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+UART_tx("----------------------------------\n\n\n");
+    7ad8:	8c e6       	ldi	r24, 0x6C	; 108
+    7ada:	93 e0       	ldi	r25, 0x03	; 3
+    7adc:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+
+
+LED_blink(20);
+    7ae0:	84 e1       	ldi	r24, 0x14	; 20
+    7ae2:	0e 94 97 39 	call	0x732e	; 0x732e <LED_blink>
+CLEAR_peripherals();
+    7ae6:	0e 94 75 38 	call	0x70ea	; 0x70ea <CLEAR_peripherals>
+JUMP_APP();
+    7aea:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
+
+}
+    7aee:	df 91       	pop	r29
+    7af0:	cf 91       	pop	r28
+    7af2:	1f 91       	pop	r17
+    7af4:	0f 91       	pop	r16
+    7af6:	ff 90       	pop	r15
+    7af8:	ef 90       	pop	r14
+    7afa:	df 90       	pop	r13
+    7afc:	08 95       	ret
+
+00007afe <Boot_unlock_handler>:
+if(d2<10){UART_tx_single('0');}
+UART_print_dec(d2);
+}
+
+
+void Boot_unlock_handler(void){
+    7afe:	ff 92       	push	r15
+    7b00:	0f 93       	push	r16
+    7b02:	1f 93       	push	r17
+    7b04:	cf 93       	push	r28
+    7b06:	df 93       	push	r29
+LED_on();
+    7b08:	52 9a       	sbi	0x0a, 2	; 10
+    7b0a:	5a 9a       	sbi	0x0b, 2	; 11
+chip_erase_allowed=0;
+    7b0c:	10 92 d0 03 	sts	0x03D0, r1
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7b10:	80 91 c0 00 	lds	r24, 0x00C0
+    7b14:	85 ff       	sbrs	r24, 5
+    7b16:	fc cf       	rjmp	.-8      	; 0x7b10 <Boot_unlock_handler+0x12>
+UDR0=data;
+    7b18:	8b e1       	ldi	r24, 0x1B	; 27
+    7b1a:	80 93 c6 00 	sts	0x00C6, r24
+
+void Boot_unlock_handler(void){
+LED_on();
+chip_erase_allowed=0;
+UART_tx_single(BOOT_READY_FOR_ENCRYPT_KEY);
+while(UART_rx()!=BOOT_UNLOCK_KEY);
+    7b1e:	0e 94 6b 3a 	call	0x74d6	; 0x74d6 <UART_rx>
+    7b22:	88 31       	cpi	r24, 0x18	; 24
+    7b24:	e1 f7       	brne	.-8      	; 0x7b1e <Boot_unlock_handler+0x20>
+    7b26:	00 e0       	ldi	r16, 0x00	; 0
+    7b28:	10 e0       	ldi	r17, 0x00	; 0
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+UDR0=data;
+    7b2a:	e9 e1       	ldi	r30, 0x19	; 25
+    7b2c:	fe 2e       	mov	r15, r30
+
+void Boot_unlock_handler(void){
+LED_on();
+chip_erase_allowed=0;
+UART_tx_single(BOOT_READY_FOR_ENCRYPT_KEY);
+while(UART_rx()!=BOOT_UNLOCK_KEY);
+    7b2e:	c5 e8       	ldi	r28, 0x85	; 133
+    7b30:	d4 e0       	ldi	r29, 0x04	; 4
+
+int retry=0;
+RETRY_ENCRYPTION:
+
+for(uint8_t i=0;i<32;i++){ENCRYPT_KEY_BUFFER[i]=UART_rx();}
+    7b32:	0e 94 6b 3a 	call	0x74d6	; 0x74d6 <UART_rx>
+    7b36:	89 93       	st	Y+, r24
+    7b38:	84 e0       	ldi	r24, 0x04	; 4
+    7b3a:	c5 3a       	cpi	r28, 0xA5	; 165
+    7b3c:	d8 07       	cpc	r29, r24
+    7b3e:	c9 f7       	brne	.-14     	; 0x7b32 <Boot_unlock_handler+0x34>
+retry++;
+    7b40:	0f 5f       	subi	r16, 0xFF	; 255
+    7b42:	1f 4f       	sbci	r17, 0xFF	; 255
+if(retry>5)              {
+    7b44:	06 30       	cpi	r16, 0x06	; 6
+    7b46:	11 05       	cpc	r17, r1
+    7b48:	44 f0       	brlt	.+16     	; 0x7b5a <Boot_unlock_handler+0x5c>
+                            LED_off();
+    7b4a:	5a 98       	cbi	0x0b, 2	; 11
+    7b4c:	52 98       	cbi	0x0a, 2	; 10
+							UART_tx("\nAuthentication Error!\n");
+    7b4e:	82 e9       	ldi	r24, 0x92	; 146
+    7b50:	93 e0       	ldi	r25, 0x03	; 3
+    7b52:	0e 94 51 3a 	call	0x74a2	; 0x74a2 <UART_tx>
+							WDT_reset();
+    7b56:	0e 94 5c 38 	call	0x70b8	; 0x70b8 <WDT_reset>
+    7b5a:	20 e0       	ldi	r18, 0x00	; 0
+    7b5c:	30 e0       	ldi	r19, 0x00	; 0
+							
+							}
+for(uint8_t i=0;i<16;i++){
+                            if(ENCRYPT_KEY[i]!=ENCRYPT_KEY_BUFFER[i])
+    7b5e:	f9 01       	movw	r30, r18
+    7b60:	e4 55       	subi	r30, 0x54	; 84
+    7b62:	fc 4f       	sbci	r31, 0xFC	; 252
+    7b64:	d9 01       	movw	r26, r18
+    7b66:	ab 57       	subi	r26, 0x7B	; 123
+    7b68:	bb 4f       	sbci	r27, 0xFB	; 251
+    7b6a:	90 81       	ld	r25, Z
+    7b6c:	8c 91       	ld	r24, X
+    7b6e:	98 17       	cp	r25, r24
+    7b70:	29 f0       	breq	.+10     	; 0x7b7c <Boot_unlock_handler+0x7e>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7b72:	80 91 c0 00 	lds	r24, 0x00C0
+    7b76:	85 ff       	sbrs	r24, 5
+    7b78:	fc cf       	rjmp	.-8      	; 0x7b72 <Boot_unlock_handler+0x74>
+    7b7a:	10 c0       	rjmp	.+32     	; 0x7b9c <Boot_unlock_handler+0x9e>
+							}
+for(uint8_t i=0;i<16;i++){
+                            if(ENCRYPT_KEY[i]!=ENCRYPT_KEY_BUFFER[i])
+							   {
+							      UART_tx_single(BOOT_RETRY);
+							      goto RETRY_ENCRYPTION;
+    7b7c:	2f 5f       	subi	r18, 0xFF	; 255
+    7b7e:	3f 4f       	sbci	r19, 0xFF	; 255
+                            LED_off();
+							UART_tx("\nAuthentication Error!\n");
+							WDT_reset();
+							
+							}
+for(uint8_t i=0;i<16;i++){
+    7b80:	20 31       	cpi	r18, 0x10	; 16
+    7b82:	31 05       	cpc	r19, r1
+    7b84:	61 f7       	brne	.-40     	; 0x7b5e <Boot_unlock_handler+0x60>
+							      UART_tx_single(BOOT_RETRY);
+							      goto RETRY_ENCRYPTION;
+						        }
+							}
+for(uint8_t i=16;i<32;i++){
+                            if(ENCRYPT_KEY_BUFFER[16]!=ENCRYPT_KEY_BUFFER[i])
+    7b86:	90 91 95 04 	lds	r25, 0x0495
+    7b8a:	e5 e9       	ldi	r30, 0x95	; 149
+    7b8c:	f4 e0       	ldi	r31, 0x04	; 4
+    7b8e:	80 81       	ld	r24, Z
+    7b90:	98 17       	cp	r25, r24
+    7b92:	39 f0       	breq	.+14     	; 0x7ba2 <Boot_unlock_handler+0xa4>
+_delay_ms(100);
+}
+
+
+void UART_tx_single(unsigned char data){
+while((UCSR0A & (1<<UDRE0))==0);
+    7b94:	80 91 c0 00 	lds	r24, 0x00C0
+    7b98:	85 ff       	sbrs	r24, 5
+    7b9a:	fc cf       	rjmp	.-8      	; 0x7b94 <Boot_unlock_handler+0x96>
+UDR0=data;
+    7b9c:	f0 92 c6 00 	sts	0x00C6, r15
+    7ba0:	c6 cf       	rjmp	.-116    	; 0x7b2e <Boot_unlock_handler+0x30>
+							}
+for(uint8_t i=16;i<32;i++){
+                            if(ENCRYPT_KEY_BUFFER[16]!=ENCRYPT_KEY_BUFFER[i])
+							   {
+							      UART_tx_single(BOOT_RETRY);
+							      goto RETRY_ENCRYPTION;
+    7ba2:	31 96       	adiw	r30, 0x01	; 1
+							   {
+							      UART_tx_single(BOOT_RETRY);
+							      goto RETRY_ENCRYPTION;
+						        }
+							}
+for(uint8_t i=16;i<32;i++){
+    7ba4:	84 e0       	ldi	r24, 0x04	; 4
+    7ba6:	e5 3a       	cpi	r30, 0xA5	; 165
+    7ba8:	f8 07       	cpc	r31, r24
+    7baa:	89 f7       	brne	.-30     	; 0x7b8e <Boot_unlock_handler+0x90>
+							   {
+							      UART_tx_single(BOOT_RETRY);
+							      goto RETRY_ENCRYPTION;
+							    }
+							}
+}
+    7bac:	df 91       	pop	r29
+    7bae:	cf 91       	pop	r28
+    7bb0:	1f 91       	pop	r17
+    7bb2:	0f 91       	pop	r16
+    7bb4:	ff 90       	pop	r15
+    7bb6:	08 95       	ret
+
+00007bb8 <main>:
+
+
+
+int main(void){
+
+UART_init(19200);
+    7bb8:	60 e0       	ldi	r22, 0x00	; 0
+    7bba:	7b e4       	ldi	r23, 0x4B	; 75
+    7bbc:	80 e0       	ldi	r24, 0x00	; 0
+    7bbe:	90 e0       	ldi	r25, 0x00	; 0
+    7bc0:	0e 94 b7 38 	call	0x716e	; 0x716e <UART_init>
+
+Boot_unlock_handler();
+    7bc4:	0e 94 7f 3d 	call	0x7afe	; 0x7afe <Boot_unlock_handler>
+  
+Page_write_handler();
+    7bc8:	0e 94 94 3a 	call	0x7528	; 0x7528 <Page_write_handler>
+
+    7bcc:	80 e0       	ldi	r24, 0x00	; 0
+    7bce:	90 e0       	ldi	r25, 0x00	; 0
+    7bd0:	08 95       	ret
+
+00007bd2 <__mulsi3>:
+    7bd2:	62 9f       	mul	r22, r18
+    7bd4:	d0 01       	movw	r26, r0
+    7bd6:	73 9f       	mul	r23, r19
+    7bd8:	f0 01       	movw	r30, r0
+    7bda:	82 9f       	mul	r24, r18
+    7bdc:	e0 0d       	add	r30, r0
+    7bde:	f1 1d       	adc	r31, r1
+    7be0:	64 9f       	mul	r22, r20
+    7be2:	e0 0d       	add	r30, r0
+    7be4:	f1 1d       	adc	r31, r1
+    7be6:	92 9f       	mul	r25, r18
+    7be8:	f0 0d       	add	r31, r0
+    7bea:	83 9f       	mul	r24, r19
+    7bec:	f0 0d       	add	r31, r0
+    7bee:	74 9f       	mul	r23, r20
+    7bf0:	f0 0d       	add	r31, r0
+    7bf2:	65 9f       	mul	r22, r21
+    7bf4:	f0 0d       	add	r31, r0
+    7bf6:	99 27       	eor	r25, r25
+    7bf8:	72 9f       	mul	r23, r18
+    7bfa:	b0 0d       	add	r27, r0
+    7bfc:	e1 1d       	adc	r30, r1
+    7bfe:	f9 1f       	adc	r31, r25
+    7c00:	63 9f       	mul	r22, r19
+    7c02:	b0 0d       	add	r27, r0
+    7c04:	e1 1d       	adc	r30, r1
+    7c06:	f9 1f       	adc	r31, r25
+    7c08:	bd 01       	movw	r22, r26
+    7c0a:	cf 01       	movw	r24, r30
+    7c0c:	11 24       	eor	r1, r1
+    7c0e:	08 95       	ret
+
+00007c10 <__udivmodhi4>:
+    7c10:	aa 1b       	sub	r26, r26
+    7c12:	bb 1b       	sub	r27, r27
+    7c14:	51 e1       	ldi	r21, 0x11	; 17
+    7c16:	07 c0       	rjmp	.+14     	; 0x7c26 <__udivmodhi4_ep>
+
+00007c18 <__udivmodhi4_loop>:
+    7c18:	aa 1f       	adc	r26, r26
+    7c1a:	bb 1f       	adc	r27, r27
+    7c1c:	a6 17       	cp	r26, r22
+    7c1e:	b7 07       	cpc	r27, r23
+    7c20:	10 f0       	brcs	.+4      	; 0x7c26 <__udivmodhi4_ep>
+    7c22:	a6 1b       	sub	r26, r22
+    7c24:	b7 0b       	sbc	r27, r23
+
+00007c26 <__udivmodhi4_ep>:
+    7c26:	88 1f       	adc	r24, r24
+    7c28:	99 1f       	adc	r25, r25
+    7c2a:	5a 95       	dec	r21
+    7c2c:	a9 f7       	brne	.-22     	; 0x7c18 <__udivmodhi4_loop>
+    7c2e:	80 95       	com	r24
+    7c30:	90 95       	com	r25
+    7c32:	bc 01       	movw	r22, r24
+    7c34:	cd 01       	movw	r24, r26
+    7c36:	08 95       	ret
+
+00007c38 <__udivmodsi4>:
+    7c38:	a1 e2       	ldi	r26, 0x21	; 33
+    7c3a:	1a 2e       	mov	r1, r26
+    7c3c:	aa 1b       	sub	r26, r26
+    7c3e:	bb 1b       	sub	r27, r27
+    7c40:	fd 01       	movw	r30, r26
+    7c42:	0d c0       	rjmp	.+26     	; 0x7c5e <__udivmodsi4_ep>
+
+00007c44 <__udivmodsi4_loop>:
+    7c44:	aa 1f       	adc	r26, r26
+    7c46:	bb 1f       	adc	r27, r27
+    7c48:	ee 1f       	adc	r30, r30
+    7c4a:	ff 1f       	adc	r31, r31
+    7c4c:	a2 17       	cp	r26, r18
+    7c4e:	b3 07       	cpc	r27, r19
+    7c50:	e4 07       	cpc	r30, r20
+    7c52:	f5 07       	cpc	r31, r21
+    7c54:	20 f0       	brcs	.+8      	; 0x7c5e <__udivmodsi4_ep>
+    7c56:	a2 1b       	sub	r26, r18
+    7c58:	b3 0b       	sbc	r27, r19
+    7c5a:	e4 0b       	sbc	r30, r20
+    7c5c:	f5 0b       	sbc	r31, r21
+
+00007c5e <__udivmodsi4_ep>:
+    7c5e:	66 1f       	adc	r22, r22
+    7c60:	77 1f       	adc	r23, r23
+    7c62:	88 1f       	adc	r24, r24
+    7c64:	99 1f       	adc	r25, r25
+    7c66:	1a 94       	dec	r1
+    7c68:	69 f7       	brne	.-38     	; 0x7c44 <__udivmodsi4_loop>
+    7c6a:	60 95       	com	r22
+    7c6c:	70 95       	com	r23
+    7c6e:	80 95       	com	r24
+    7c70:	90 95       	com	r25
+    7c72:	9b 01       	movw	r18, r22
+    7c74:	ac 01       	movw	r20, r24
+    7c76:	bd 01       	movw	r22, r26
+    7c78:	cf 01       	movw	r24, r30
+    7c7a:	08 95       	ret
+
+00007c7c <_exit>:
+    7c7c:	f8 94       	cli
+
+00007c7e <__stop_program>:
+    7c7e:	ff cf       	rjmp	.-2      	; 0x7c7e <__stop_program>
